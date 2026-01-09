@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>자바스크립트 동작 순서</title>
+
+  <link rel="stylesheet" href="./css/bootstrap.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="./js/bootstrap.bundle.js"></script>
+
+  <!--  html, css, javascript 는 웹 문서가 열릴 때 html 문서의 가장 상단부터 하단까지 순서대로 실행 -->
+  <!--  javascript 로 html 태그를 검색하여 찾아올 때 javascript 가 먼저 실행되면 html 태그는 아직 로딩이 되지 않은 상태이기 때문에 javascript html 태그를 검색할 수 없음 -->
+  <!--  javascript 이벤트 중에 html 문서가 모두 로딩된 후 지정한 javascript 코드가 동작하도록 하는 이벤트가 따로 존재함 -->
+
+<!--  1. head 태그에 사용하는 자바스크립트는 기본 설정값 혹은 전역 변수, 함수 선언 시 사용 -->
+<!--  2. 지정한 페이지가 열리자마자 자동 동작해야하는 자바스크립트 코드는 head 태그에 입력 -->
+<!--  3. 이벤트 관련 자바스크립트는 body 태그 가장 하단에 입력하여 사용 -->
+
+  <script>
+    console.log("1. head 태그에 있는 자바스크립트 코드");
+
+    const btn01 = document.querySelector("#btn01");
+    btn01.addEventListener("click", function(){
+      console.log("head 태그에서 설정한 버튼 클릭 이벤트");
+    });
+  </script>
+
+  <script>
+//    html 태그가 모두 로딩된 후 동작하는 자바스크립트 이벤트
+    document.addEventListener("DOMContentLoaded", function() {
+      console.log("2. head 태그에서 화면 로딩 완료 이벤트 후 동작하는 자바스크립트 코드");
+
+      const btn03 = document.querySelector("#btn03");
+      btn03.addEventListener("click", function(){
+        console.log("head 태그에서 화면 로딩 완료 후 설정한 클릭 이벤트");
+      });
+    });
+  </script>
+</head>
+<body>
+
+<div class="container mt-5">
+  <h2>자바스크립트 위치에 따른 동작</h2>
+
+  <button type="button" class="btn btn-primary" id="btn01">버튼01</button>
+  <button type="button" class="btn btn-primary" id="btn02">버튼02</button>
+  <button type="button" class="btn btn-primary" id="btn03">버튼03</button>
+</div>
+
+<script>
+  console.log("3. body 태그에 있는 자바스크립트 코드");
+
+  const btn02 = document.querySelector("#btn02");
+  btn02.addEventListener("click", function(){
+    console.log("body 태그 하단에서 설정한 버튼 클릭 이벤트");
+  });
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
