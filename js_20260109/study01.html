@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>제어문 사용하기</title>
+
+  <script >
+
+    // 제어문 : 조건식의 결과에 따라 프로그램의 흐름을 제어할 수 있는 명령어
+  //   자바스크립트에서는 제어문으로 if, switch ~ case, 삼항연산자를 제공하고 있음
+
+  //   if : 단순 if문, if ~ else 문, else if 문 으로 나누어짐
+  //   단순 if 문은 프로그램 실행 중 조건식의 결과가 true 이면, 추가로 내용을 실행하는 방식, false 이면 기존 내용만 실행하는 형태임
+
+    let money = prompt("소지하고 있는 금액을 입력하세요");
+    money = Number(money);
+
+    console.log("카페에 갑니다");
+    console.log("커피를 주문합니다.");
+
+    if (money > 9000) {
+      console.log("조각 케익을 주문합니다.");
+    }
+
+    console.log("음식을 맛있게 먹습니다.");
+
+  //   문제 1) 사용자 키보드 입력을 통해서 온도를 입력받고, 온도가 100도 이상이면 '물이 끓습니다, 불을 꺼주세요' 라는 경고 메시지를 출력하는 프로그램을 작성하세요 (100 도 미만일 경우 아무것도 출력하지 않음)
+  //   출력은 alert() 을 사용하여 출력
+    console.log("\n----- 문제 1 -----\n");
+
+    // 키보드 입력 시 prompt() 사용
+    let c = prompt("현재 물의 온도를 입력해주세요");
+    // prompt() 로 입력받은 데이터는 모두 문자열, 연산을 위해서 숫자형으로 변환
+    c = Number(c);
+
+    if (c >= 100) {
+      alert("물이 끓습니다. 불을 꺼주세요");
+    }
+
+
+  //   문제 2) 키보드 입력을 통해서 날씨 정보('맑음', '비', '눈')를 입력받고, 날씨가 '비' 인 경우 '우산을 챙기세요' 라는 알림창을 출력하고, '눈' 인 경우 '미끄러지지 않도록 조심하세요' 라는 알림을 출력하는 프로그램을 작성하세요
+  //    단순 if 문을 사용하여 출력
+    console.log("\n----- 문제 2 -----\n");
+
+    const weather = prompt("현재 날씨를 입력해주세요", "맑음");
+
+    if (weather == "비") {
+      alert("우산을 챙기세요");
+    }
+
+    if (weather == "눈") {
+      alert("미끄러지지 않도록 조심하세요");
+    }
+
+
+
+  //   문제 3) 키보드 입력을 통해서 숫자를 하나 입력받고, 입력받은 숫자에 대해서 '숫자 xx를 입력하였습니다.' 라는 알림창을 출력하며, 3의 배수일 경우 '숫자 xx 는 3의 배수입니다' 라는 알림창을 추가로 출력하는 프로그램을 작성하세요
+    console.log("\n----- 문제 3 -----\n");
+
+    let num = prompt("숫자를 하나 입력하세요");
+
+    // isNaN(데이터) : 매개변수로 입력받은 데이터가 숫자로 변환될 수 있는 데이터인지 확인, 숫자로 변환되지 않으면 true, 숫자로 변환되면 false
+    if (isNaN(num)) {
+      alert("숫자를 입력해주세요");
+    }
+    else {
+      num = Number(num); // prompt() 로 입력받은 데이터를 숫자타입으로 변환
+      alert("입력받은 숫자는 " + num + "입니다.");
+
+      if (num % 3 == 0) {
+        alert("숫자 " + num + "은 3의 배수입니다");
+      }
+    }
+
+
+  //    if ~ else : 프로그램 실행 중 조건식의 결과가 true 일 때 실행하는 부분과 false 일 때 실행하는 부분이 달라지는 if 문
+
+    console.log("카페에 방문합니다.");
+    console.log("커피를 주문합니다.");
+
+    const eat = confirm("유당불내증이 있나요?");
+
+    if (eat == true) {
+      console.log("아메리카노를 주문합니다.");
+    }
+    else {
+      console.log("카페라떼를 주문합니다.");
+    }
+
+    console.log("주문한 커피를 마십니다");
+
+
+  //   문제 4) 사용자 입력을 통해서 id 를 입력받고, 입력받은 id 가 admin 이면 '관리자님 반갑습니다' 를 출력하고 그 이외의 id 이면 '회원님 반갑습니다' 를 출력하는 프로그램을 작성하세요
+    console.log("\n----- 문제 4 -----\n");
+    const id = prompt("사용자 id 를 입력해주세요");
+
+    if (id == "admin") {
+      console.log("관리자님 반갑습니다.");
+    }
+    else {
+      console.log(id + " 회원님 반갑습니다.");
+    }
+
+  //   문제 5) 놀이기구에 탑승하려면 최소 150cm 이상 이어야 합니다. 학생의 키를 입력받고 키에 따라 탑승 가능 여부를 출력하는 프로그램을 작성하세요 ('탑승 가능', '탑승 불가능' 으로 출력)
+    console.log("\n----- 문제 5 -----\n");
+
+    let height = prompt("탑승할 승객의 키를 입력하세요");
+    height = Number(height);
+
+    if (height >= 150) {
+      console.log("탑승 가능");
+    }
+    else {
+      console.log("탑승 불가능");
+    }
+
+  //   문제 6) 국어, 수학, 영어 점수를 각각 입력받고, 각각의 점수가 60 점 이상이고, 총점이 180 점 이상을 경우 '합격 입니다'를 출력하고, 각각의 점수가 60점 미만이나, 총점이 180 미만 일 경우 '불합격 입니다'를 출력하는 프로그램을 작성하세요
+  //   논리 연산자 여러개를 사용
+    console.log("\n----- 문제 6 -----\n");
+
+    let kor = prompt("국어 점수를 입력하세요");
+    kor = Number(kor);
+    let math = prompt("수학 점수를 입력하세요");
+    math = Number(math);
+    let eng = prompt("영어 점수를 입력하세요");
+    eng = Number(eng);
+    const total = kor + math + eng;
+
+    if (kor >= 60 && math >= 60 && eng >= 60 && total >= 180) {
+      console.log("합격입니다.");
+    }
+    else {
+      console.log("불합격입니다.");
+    }
+
+  //   else if : if 문의 조건식이 여러개인 if 문, if 문 을 여러개 사용하는 것과 다름
+  //   else 문은 생략 가능함
+  //   조건식 입력 시 순차적으로 입력해야 함
+
+    let score = 80;
+
+    if (score >= 90) {
+      console.log("당신의 등급은 A 입니다.");
+    }
+    else if (score >= 80) {
+      console.log("당신의 등급은 B 입니다.");
+    }
+    else if (score >= 70) {
+      console.log("당신의 등급은 C 입니다.");
+    }
+    else if (score >= 60) {
+      console.log("당신의 등급은 D 입니다.");
+    }
+    else {
+      console.log("당신의 등급은 F 입니다.");
+    }
+
+    console.log("\n");
+
+    score = 80;
+
+    // else if 문 사용 시 조건식을 순차적으로 입력하지 않을 경우 원하지 않는 결과가 출력될 수 있음
+    if (score >= 90) {
+      console.log("당신의 등급은 A 입니다.");
+    }
+    // 점수가 80 점이지만 조건식이 70 이상이므로 결과가 true 가 되어 '80 점에 C 등급'으로 출력됨
+    else if (score >= 70) {
+      console.log("당신의 등급은 C 입니다.");
+    }
+    else if (score >= 80) {
+      console.log("당신의 등급은 B 입니다.");
+    }
+    else if (score >= 60) {
+      console.log("당신의 등급은 D 입니다.");
+    }
+    else {
+      console.log("당신의 등급은 F 입니다.");
+    }
+
+    console.log("\n");
+
+    score = 80;
+
+    // else if 문은 if 문 여러개를 사용한 것과 다르다, else if 문은 전체가 하나의 if 문으로 동작하지만, if 문 여러개는 각각의 if 문을 실행하는 것이므로 결과가 다르게 출력됨
+    if (score >= 90) {
+      console.log("당신의 등급은 A 입니다.");
+    }
+
+    if (score >= 80) {
+      console.log("당신의 등급은 B 입니다.");
+    }
+
+    if (score >= 70) {
+      console.log("당신의 등급은 C 입니다.");
+    }
+
+    if (score >= 60) {
+      console.log("당신의 등급은 D 입니다.");
+    }
+
+    if (score < 60) {
+      console.log("당신의 등급은 F 입니다.");
+    }
+
+
+  //   문제 7) 사용자 입력을 통해서 양수 혹은 음수를 입력하고, 입력한 숫자가 0 보다 크면 '양수 입니다', 0보다 작으면 '음수 입니다.', 0 이면 '0 입니다' 를 출력하는 프로그램을 작성하세요
+    console.log("\n----- 문제 7 -----\n");
+    let num2 = prompt("숫자를 입력하세요");
+    num2 = Number(num2);
+
+    if (num2 > 0) {
+      console.log("양수 입니다.");
+    }
+    else if (num2 < 0) {
+      console.log("음수 입니다.");
+    }
+    else {
+      console.log("0 입니다.");
+    }
+
+  //   문제 8) 사용자 입력을 통해서 가슴 둘레 사이즈를 입력하고 옷 사이즈를 출력하는 프로그램을 작성하세요
+  //   90 미만 : S, 95 미만 : M, 100 미만 : L, 105 미만 : XL
+    console.log("\n----- 문제 8 -----\n");
+
+    let size = prompt("가슴 둘레 사이즈를 입력하세요");
+
+    if (size < 90) {
+      console.log("사이즈 S 입니다.");
+    }
+    else if (size < 95) {
+      console.log("사이즈 M 입니다.");
+    }
+    else if (size < 100) {
+      console.log("사이즈 L 입니다.");
+    }
+    else if (size < 105) {
+      console.log("사이즈 XL 입니다.");
+    }
+    else {
+      console.log("맞는 사이즈가 없습니다.");
+    }
+
+  //   문제 9) 키보드 입력을 통해서 캐릭터의 이동 방향을 출력하는 프로그램을 작성하세요
+  //   w : '앞으로 이동', a : '왼쪽으로 이동', s : '뒤로 이동', d : '오른쪽으로 이동', 그외 : '알수없는 키'
+    console.log("\n----- 문제 9 -----\n");
+
+    let key = prompt("키보드의 키를 하나 입력하세요");
+
+    if (key == "w") {
+      console.log("앞으로 이동");
+    }
+    else if (key == "s") {
+      console.log("뒤로 이동");
+    }
+    else if (key == "a") {
+      console.log("왼쪽으로 이동");
+    }
+    else if (key == "d") {
+      console.log("오른쪽으로 이동");
+    }
+    else {
+      console.log("알수없는 키");
+    }
+
+
+    console.log("\n----- 삼항연산자 -----\n");
+
+  //   삼항연산자 : 피연산자가 3개인 연산자를 삼항연산자라고 함
+  //   if ~ else 문과 동일한 역할을 하는 제어문
+  //   '?' 기호 앞에 있는 조건식의 결과에 따라서 ' : ' 기호 왼쪽의 소스를 실행하거나 ' : ' 기호 오른쪽의 소스를 실행하는 형태
+  //   if ~ else 문 대신 사용하는 연산자로 소스코드를 짧게 사용하려고 하는 경우에 사용함
+  //      리액트에서 조건에 따라 화면 UI 를 다르게 표현하고자 할 경우 사용함
+
+    let userNumber = prompt("숫자를 입력하세요");
+    userNumber = Number(userNumber);
+
+    if (userNumber !== null) {
+      userNumber % 3 === 0 ? console.log('3의 배수입니다') : console.log("3의 배수가 아닙니다");
+    }
+    else {
+      console.log("입력이 취소되었습니다.");
+    }
+
+  //   문제 10) 놀이기구에 탑승하려면 최소 150cm 이상 이어야 합니다. 학생의 키를 입력받고 키에 따라 탑승 가능 여부를 출력하는 프로그램을 삼항연산자를 사용하여 작성하세요 ('탑승 가능', '탑승 불가능' 으로 출력)
+    console.log("\n----- 문제 10 -----\n");
+
+    let height1 = prompt("당신의 키를 입력하세요");
+
+    height1 >= 150 ? console.log("탑승 가능") : console.log("탑승 불가능");
+
+  </script>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
