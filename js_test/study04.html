@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+  <script>
+//  자바스크립트 ES6 의 변수 선언
+//  var, let, const 키워드를 사용하여 변수 및 상수를 선언
+//  자바스크립트의 변수는 데이터 타입 추론 방식을 사용함, 데이터 타입없이 키워드 var, let, const 만 사용하여 선언하면 됨
+//  자바스크립트의 변수는 모든 데 이터 타입을 다 저장할 수있음
+//  하나의 변수에 여러가지 데이터 타입의 데이터를 변경하면서 저장할 수 있음
+
+//  var : 자바스크립트의 기본 변수 선언 키워드, 변수가 메모리상에 살아있는 범위가 함수를 기준으로 함, 동일한 이름으로 변수를 재선언할 수 있음
+//  let : ES6 버전에서 새로 추가된 변수 선언 키워드, 변수가 메모리상에 살아있는 범위가 코드 블럭을 기준으로 함, 동일한 이름으로 변수를 재선언할 수 없음, 자바의 변수와 동일함
+//  const : ES6 버전에서 새로 추가된 상수 선언 키워드, 상수가 메모리상에 살아있는 범위가 코드 블럭을 기준으로 함, 동일한 이름으로 상수를 재선언할 수 없음, 데이터 단순 저장 시 const 를 사용하는 것이 기본, 상수 선언과 동시에 값을 입력해야 함
+
+//  사용법 : (자바와 동일함)
+//    var 변수명;
+//    let 변수명;
+//    const 상수명 = 데이터;
+
+    var varA = 10;
+    let letA = 10;
+    // 상수는 선언과 동시에 값을 저장해야 함
+    const constA = 10;
+
+    console.log("var 로 선언한 변수 : " + varA);
+    console.log("let 으로 선언한 변수 : " + letA);
+    console.log("const 로 선언한 상수 : " + constA);
+
+    varA = 100;
+    letA = 100;
+    // const 는 상수이기 때문에 수정이 불가능함
+    // constA = 100;
+
+    // var 로 선언한 변수는 동일한 이름으로 재 선언이 가능
+    var varA = 1000;
+    console.log("var 로 선언한 변수를 재선언 : " + varA);
+
+    var varA = 2000;
+    console.log("var 로 선언한 변수를 재선언 : " + varA);
+
+    // let 으로 선언한 변수는 같은 이름으로 변수를 재선언할 수 없음
+    // let letA = 1000;
+    // console.log("let 으로 선언한 변수를 재선언 : " + letA);
+
+    // const 로 선언한 상수는 같은 이름으로 상수를 재선언할 수 없음
+    // const constA = 1000;
+    // console.log("const 로 선언한 상수를 재선언 : " + constA);
+
+    // 자바스크립트의 변수, 상수는 데이터 타입 추론 방식을 사용하여 데이터 타입없이 사용
+    var varB = "문자열";
+    let letB = true;
+    const constB = "문자열";
+
+    console.log("varB : " + varB);
+    console.log("letB : " + letB);
+    console.log("constB : " + constB);
+
+    console.log("--------------------------");
+
+    var varC = 100;
+    console.log("varC : " + varC);
+    varC = "문자열";
+    console.log("varC : " + varC);
+    varC = false;
+    console.log("varC : " + varC);
+    varC = [10, 20, 30];
+    console.log(varC);
+
+    let letC = 100;
+    console.log("letC : " + letC);
+    letC = "문자열";
+    console.log("letC : " + letC);
+    letC = true;
+    console.log("letC : " + letC);
+    letC = [10, 20, 30];
+    console.log(letC);
+
+    console.log("---------------------------");
+
+    if (true) {
+      var varD = 10;
+      let letD = 10;
+      console.log("if 문의 코드블럭 안에서 선언된 var 변수 varD : " + varD);
+      console.log("if 문의 코드블럭 안에서 선언된 let 변수 letD : " + letD);
+    }
+
+    // var 키워드로 선언한 변수는 함수를 기준으로 하여 함수를 벗어나면 메모리에서 삭제
+    console.log("if 문 밖에서 호출하는 varD : " + varD);
+    // let 키워드로 선언한 변수는 코드블럭을 기준으로 하여 코드블럭을 벗어나면 메모리에서 삭제
+    // console.log("id 문 밖에서 호출하는 letD : " + letD);
+
+    // 자바스크립트의 함수 선언
+    function funcA() {
+      var varE = 100;
+      let letE = 100;
+      console.log("함수 funcA 안에 선언한 var 변수 varE : " + varE);
+      console.log("함수 funcA 안에 선언한 let 변수 letE : " + letE);
+    }
+
+    funcA();
+
+    // var 로 선언한 변수는 함수를 벗어나면 메모리에서 삭제
+    // console.log("함수 funcA 밖에서 호출한 varE : " + varE);
+    // let 으로 선언한 변수는 코드블럭을 벗어나면 메모리에서 삭제
+    // console.log("함수 funcA 밖에서 호출한 letE : " + letE);
+
+  </script>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
