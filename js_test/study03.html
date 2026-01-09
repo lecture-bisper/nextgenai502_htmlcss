@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+  <link rel="stylesheet" href="./css/bootstrap.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="./js/bootstrap.bundle.js"></script>
+
+</head>
+<body>
+
+<div class="container mt-5">
+  <h2>자바스크립트 기본 입출력 방법</h2>
+
+  <button type="button" class="btn btn-primary" id="btn-alert">alert() 사용하기</button>
+  <button type="button" class="btn btn-primary" id="btn-confirm">confirm() 사용하기</button>
+  <button type="button" class="btn btn-primary" id="btn-prompt">prompt() 사용하기</button>
+  <br>
+</div>
+
+<script>
+  const btnAlert = document.querySelector("#btn-alert");
+  btnAlert.addEventListener("click", function () {
+    alert("alert() 사용!!");
+    document.writeln("alert() 사용!!, 기존 내용은 모두 삭제 됨");
+  });
+
+  const btnConfirm = document.querySelector("#btn-confirm");
+  btnConfirm.addEventListener("click", function () {
+    const result = confirm("confirm() 사용, 결과값은 true/false 로 출력됨");
+    console.log("confirm 결과 : " + result);
+    document.writeln("confirm() 사용!!, 기존 내용은 모두 삭제 됨");
+  });
+
+  const btnPrompt = document.querySelector("#btn-prompt");
+  btnPrompt.addEventListener("click", function () {
+    const result = prompt("prompt() 사용, 키보드로 입력한 내용을 출력함");
+    console.log("prompt 결과 : " + result);
+    document.writeln("prompt() 사용!!, 기존 내용은 모두 삭제 됨");
+  });
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
