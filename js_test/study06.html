@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+
+<script>
+  // 연산자 : 기본적으로 자바의 연산자와 동일함
+//   산술연산자 : +, -, *, /, % 를 사용
+  console.log("----- 산술 연산자 -----");
+  let a = 10;
+  let b = 20;
+  let result = 0;
+
+  result = a + b;
+  console.log("변수 a + b 는 " + result);
+  result = a - b;
+  console.log("변수 a - b 는 " + result);
+  result = a * b;
+  console.log("변수 a * b 는 " + result);
+  result = a / 3; // 자바스크립트의 숫자형은 정수와 실수를 모두 포함하기 때문에 나누기 연산 시 소수점이 있는 실수 데이터가 출력됨
+  console.log(a + " / " + 3 + " 은 " + result);
+  result = a % 3;
+  console.log(a + " % " + 3 + " 은 " + result);
+
+  console.log("----- 증감 연산자 -----");
+//   증감연산자 : 단항 연산자로 지정한 변수의 값을 1 증가하거나 1 감소시키는 연산자
+//      다른 연산식과 함께 사용 시 증감 연산자가 변수 앞에 있으면 증감 연산을 먼저 수행 후 나머지 연산을 진행, 증감 연산자 변수 뒤에 있을 경우 다른 연산을 먼저 진행 후 증감 연산을 진행
+//      증감연산이 한 라인에 혼자 있을 경우 증감 연산자가 변수 앞에 있으나 뒤에 있으나 연산 결과가 동일함
+  let num1 = 10;
+  console.log("변수 num1 : " + num1);
+  num1++;
+  ++num1;
+  console.log("변수 num1 : " + num1);
+  num1--;
+  --num1;
+  console.log("변수 num1 : " + num1);
+
+  console.log();
+
+  console.log("원본 변수 num1 : " + num1);
+  // ++ 를 변수 앞에 사용하여 화면 출력 전에 증가 연산을 실행하고, 화면에 출력
+  console.log("증가 후 num1 : " + ++num1);
+  // ++ 를 변수 뒤에 사용하여 화면 출력 후 증가 연산을 진행
+  console.log("증가 후 num1 : " + num1++);
+  console.log("변수 num1 의 현재 값 : " + num1);
+  // -- 를 변수 뒤에 사용하여 화면 출력 후 감소 연산을 진행
+  console.log("감소 후 num1 : " + num1--);
+  //  -- 를 변수 앞에 사용하여 화면 출력 후 증가 연산을 진행
+  console.log("감소 후 num1 : " + --num1);
+  console.log("변수 num1 의 현재 값 : " + num1);
+
+  console.log("\n----- 대입 연산자 -----\n");
+//   대입연산자 : 연산자 오른쪽의 연산식 결과를 연산자 왼쪽의 변수에 저장하는 연산자
+//      산술 연산자와 함께 사용하여 산술 대입 연산자로 사용할 수 있음( += 만 주로 사용)
+//      a += 10 은 a = a + 10 을 줄여서 사용한 것
+//      산술 대입 연산자 += 은 주로 문자열을 연결하여 하나의 긴 문자열로 만들 경우 많이 사용함
+  let val1 = 10 + 20;
+  console.log(val1);
+  val1 += 30;
+  console.log(val1);
+
+  console.log("\n----- 비교 연산자 -----\n");
+//   비교연산자 : 2개의 피연산자 값을 비교하여 true/false 를 반환하는 연산자
+//      비교연산자의 왼쪽을 기준으로 연산을 진행
+//      <, >, <=, >=, ==, !=, 를 기본적으로 사용하고 ===, !== 를 추가로 사용함
+//      ===, !== 은 데이터 타입까지 확인하여 비교하는 연산자임
+  let c = 10;
+  let d = 5;
+
+  result = c > d;
+  console.log("c > d 는 " + result);
+  result = c < d;
+  console.log("c < d 는 " + result);
+  result = c >= 10;
+  console.log("c >= 10 는 " + result);
+  result = c <= 10;
+  console.log("c <= 10 는 " + result);
+  result = c == d;
+  console.log("c == d 는 " + result);
+  result = c != d;
+  console.log("c != d 는 " + result);
+
+  // 자바스크립트는 유연한 문법을 적용하기 때문에 숫자 100 과 문자열 '100' 을 같다고 인식
+  // '100' 은 Number() 를 사용하여 숫자형으로 변환할 수 있기 때문에 같다고 인식
+  if (100 == "100") {
+    console.log("숫자 100 과 문자열 '100' 은 같다");
+  }
+  else {
+    console.log("숫자 100 과 문자열 '100' 은 다르다");
+  }
+
+  // === 연산자를 사용하면 엄격한 문법을 적용하여 숫자 100 과 문자열 '100' 비교하고, 데이터 타입도 비교
+  // === 연산자로 100 === '100' 을 연산하면 같지 않다고 출력 됨
+  if (100 === "100") {
+    console.log("숫자 100 과 문자열 '100' 은 같다");
+  }
+  else {
+    console.log("숫자 100 과 문자열 '100' 은 다르다");
+  }
+
+  if (100 != "100") {
+    console.log("숫자 100 과 문자열 '100' 은 다르다");
+  }
+  else {
+    console.log("숫자 100 과 문자열 '100' 은 같다");
+  }
+
+  // !== 비교 연산자 사용 시 엄격한 문법을 적용하여 값과 데이터 타입을 함께 비교하기 때문에 100 !== "100" 의 결과는 true 로 출력
+  if (100 !== "100") {
+    console.log("숫자 100 과 문자열 '100' 은 다르다");
+  }
+  else {
+    console.log("숫자 100 과 문자열 '100' 은 같다");
+  }
+
+  console.log("\n----- 논리 연산자 -----\n");
+//   논리연산자 : 자바의 논리 연산자와 동일함
+//      && : 논리곱연산(and 연산), 연산자 왼쪽을 기준으로 연산자 왼쪽, 오른쪽이 모두 true 이면 최종 결과가 true 가 되는 연산자, 하나라도 false 이면 최종 결과는 false
+//      || : 논리합연산(or 연산), 연산자 왼쪽, 오른쪽 중 하나만 이라도 true 이면 최종 결과가 true 가 되는 연산자, 왼쪽/오른쪽 모두 false 일 때 최종 결과가 false
+//      ! : 논리부정연산(not 연산), 단항 연산자로 피 연산자의 값을 반대로 출력하는 연산자
+  console.log(10 > 20 && 10 > 5);
+  console.log(10 < 20 && 10 > 5);
+  console.log(10 < 20 && 10 < 5);
+  console.log(10 > 20 && 10 < 5);
+
+  console.log();
+
+  console.log(10 > 20 || 10 > 5);
+  console.log(10 < 20 || 10 > 5);
+  console.log(10 < 20 || 10 < 5);
+  console.log(10 > 20 || 10 < 5);
+
+  console.log();
+
+  console.log(!(10 > 20));
+  console.log(!(10 < 20));
+
+  console.log("\n----- 문자열 연결 연산자 -----\n");
+//   문자열 연결 연산자 : 짧은 문자열을 연결하여 하나의 긴 문자열로 만드는 연산자, 기호는 + , 문자열과 연산하는 다른 데이터 타입은 모두 문자열이 됨, 연산자의 왼쪽 피연산자가 기준이 됨, 자바와 동일함
+  let str1 = "java";
+  let str2 = "script";
+  let result1 = str1 + str2;
+  console.log(result1);
+
+  console.log(result1 + " es" + 1 + 2 + 3);
+  console.log(result1 + " es" + (1 + 2 + 3));
+  console.log("10 > 20 의 결과는 " + false + " 입니다");
+
+
+</script>
+<body>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
