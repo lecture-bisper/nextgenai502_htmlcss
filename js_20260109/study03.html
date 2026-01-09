@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+  <script>
+    // 배열 : 하나의 변수명으로 여러개의 데이터를 입력하는 데이터 타입, 자바스크립트의 배열은 자바의 ArrayList와 비슷함
+  //   index 를 사용하여 데이터를 구분
+  //   배열의 크기 결정되어 있지 않기 때문에 배열의 길이 조절이 가능함
+  //   사용 기호는 [], 각 요소의 구분은 ' , ' 로 구분함
+  //   자바스크립트의 배열은 여러가지의 데이터 타입을 모두 저장할 수 있음
+  //   자바스크립트의 배열 선언 시 빈 배열을 선언하고자 할 경우 반드시 'let 배열명 = [];' 형태로 사용해야 함
+
+  //   사용법 (선언)
+  //   let 배열명 = [];   // 빈 배열 선언
+  //   let 배열명 = [데이터1, 데이터2, 데이터3, ...];   // 배열 선언과 동시에 데이터 입력 (추천)
+  //   let 배열명 = new Array(데이터1, 데이터2, 데이터3, ...);   // 배열 선언과 동시에 데이터 입력
+
+  //   사용법 (사용)
+  //   배열명[index];   // 지정한 index의 데이터 출력
+  //   배열명[index] = 데이터;   // 지정한 index에 데이터 저장
+
+    let arr1; // 빈 배열이 아닌 일반 변수를 선언만 함
+    let arr2 = []; // 빈 배열 선언
+    let arr3 = [10, 20, 30]; // 배열 선언과 동시에 데이터 입력 (추천)
+    let arr4 = new Array(10, 20, 30); // 배열 선언과 동시에 데이터 입력
+
+    console.log(arr1);
+    console.log(arr2);
+    console.log(arr3);
+    console.log(arr4);
+
+    console.log("\n");
+
+    // arr1[0] = 10; // arr1 은 일반 변수이므로 배열처럼 index 를 사용할 수 없음
+    // console.log(arr1[0]);
+
+    // 빈 배열 arr2 의 index 에 데이터 저장, 빈 배열이지만 데이터 저장 시 index 번호를 사용하면 배열의 길이가 변경됨
+    arr2[0] = 10;
+    arr2[1] = 20;
+    arr2[2] = 30;
+    console.log(arr2[0]);
+    console.log(arr2[1]);
+    console.log(arr2[2]);
+
+    // 기존 배열의 각 index 에 데이터 저장
+    arr3[0] = 100;
+    arr3[1] = 200;
+    arr3[2] = 300;
+    console.log(arr3[0]);
+    console.log(arr3[1]);
+    console.log(arr3[2]);
+
+    // new Array() 를 사용하여 생성한 배열의 각 index 에 데이터 저장
+    arr4[0] = 1000;
+    arr4[1] = 2000;
+    arr4[2] = 3000;
+    console.log(arr4[0]);
+    console.log(arr4[1]);
+    console.log(arr4[2]);
+
+    console.log("\n----- 여러가지 데이터의 배열 -----\n");
+
+    let arr5 = [10, 20, 30];
+    let arr6 = [true, false];
+    let arr7 = ["java", "jsp", "spring"];
+    let arr8 = ["java", 1000, true];
+    console.log(arr5);
+    console.log(arr6);
+    console.log(arr7);
+    console.log(arr8);
+
+    console.log(arr5[1]);
+    console.log(arr6[0]);
+    console.log(arr7[2]);
+    console.log(arr8[1]);
+
+  //   자바스크립트 배열 관련 함수
+  //   자바스크립트는 배열의 기능을 쉽게 사용하도록 여러가지 함수를 제공
+
+  //   length : 지정한 배열의 길이를 출력, 출력만 가능하고 크기를 설정할 수 없음
+  //   사용법
+  //    배열명.length;
+    const arr9 = [10, 20, 30, 40, 50];
+    console.log("배열 arr9 의 길이는 " + arr9.length);
+
+  //   toString() : 지정한 배열에 저장된 요소를 모두 문자열로 출력, 하나의 긴 문자열로 출력됨, 각각 요소를 구분하는 기호로 ' , ' 가 사용되어 출력됨
+  //   사용법
+  //      let 변수명 = 배열명.toString();
+    const arr10 = ['사과', '복숭아', '배', '수박', '딸기'];
+    console.log("배열의 내용 모두 출력하기 : ");
+    let result = arr10[0] + "," + arr10[1] + "," + arr10[2] + "," + arr10[3] + "," + arr10[4];
+    console.log(result);
+
+    console.log("toString() 을 사용하여 내용을 모두 출력 : ");
+    result = arr10.toString();
+    console.log(result);
+
+  //   join(문자) : toString()과 동일한 기능을 하는 함수, 매개변수로 문자를 사용 시 해당 문자를 배열의 요소를 구분하는 기호로 사용하여 모든 요소를 문자열로 출력
+  //   사용법
+  //      let 변수명 = 배열명.join("*");
+    console.log("\n ----- join() -----\n");
+    console.log("toString() 을 사용하여 내용을 모두 출력 : ");
+    result = arr10.toString();
+    console.log(result);
+
+    console.log("join() 을 사용하여 내용을 모두 출력");
+    result = arr10.join(" * ");
+    console.log(result);
+
+  //   push(데이터) : 지정한 배열의 끝에 데이터를 추가
+  //   사용법
+  //      배열명.push(데이터);
+    console.log("\n----- push() -----\n");
+    let arr11 = ["사과", "배", "수박", "참외", "복숭아"];
+    console.log("원본 배열 : ");
+    console.log(arr11);
+
+    arr11.push("망고");
+    arr11.push("오렌지");
+
+    console.log("push() 사용 후 배열 : ");
+    console.log(arr11);
+
+  //   pop() : 지정한 배열의 마지막 데이터를 삭제
+  //   사용법
+  //      배열명.pop(); // 마지막 index 삭제
+  //      변수 = 배열명.pop(); 마지막 index 삭제 후 삭제한 데이터를 변수에 대입
+    console.log("\n----- pop() -----\n");
+    console.log("원본 배열 : ");
+    console.log(arr11);
+
+    arr11.pop();
+    result = arr11.pop();
+
+    console.log("pop() 사용 후 배열 : ");
+    console.log(arr11);
+    console.log("pop() 을 사용하여 삭제한 데이터 : " + result);
+
+  //   unshift() : 지정한 배열의 가장 앞에 데이터를 추가
+  //   사용법
+  //      배열.unshift(데이터);
+    console.log("\n ----- unshift() -----\n");
+    console.log("원본 배열 : ");
+    console.log(arr11);
+
+    arr11.unshift("자몽");
+    arr11.unshift("파인애플");
+
+    console.log("unshift() 사용 후 배열 : ");
+    console.log(arr11);
+
+  //   shift() :  지정한 배열의 가장 앞 데이터를 삭제
+  //   사용법
+  //      배열.shift(); // 0번 index 의 데이터를 삭제
+  //      변수 = 배열.shift(); // 0번 index 의 데이터 삭제, 삭제한 데이터를 반환
+    console.log("\n----- shift() -----\n");
+    console.log("원본 배열 : ");
+    console.log(arr11);
+
+    arr11.shift();
+    result = arr11.shift();
+
+    console.log("shift() 사용 후 배열 : ");
+    console.log(arr11);
+    console.log("shift() 를 사용하여 삭제 후 가져온 데이터 : " + result);
+
+  </script>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
