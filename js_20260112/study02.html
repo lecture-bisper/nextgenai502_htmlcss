@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script>
+    // object 타입 : 배열처럼 하나의 변수명으로 여러개의 데이터를 입력할 수 있는 데이터 타입
+  //   index 가 없고 대신 key 와 value 로 데이터를 구분하는 방식 (자바의 HashMap 과 같음)
+  //   데이터가 저장되는 순서가 없음
+  //   key 와 value 는 1:1 로 연동되어 있으며, key 는 중복 불가, value 는 중복 가능
+  //   배열과 같이 비슷한 데이터를 저장하기보다 특정한 사물의 전체 특징을 저장하는데 주로 사용
+  //   기호는 {} 를 사용하고, key 와 value 의 구분은 : 를 사용하며, 각각의 데이터 구분은 , 를 사용
+  //   사용 시 변수명[key] 및 변수명.key 형태로 사용
+
+  //   사용법(선언) :
+  //   const object변수명 = {}; // 빈 object 타입 선언
+  //   const object변수명 = {데이터1, 데이터2, 데이터3, ... }; // object 타입 선언과 동시에 데이터 입력
+  //   사용법(사용) :
+  //   object변수명[key명] = 데이터; // 지정한 key 에 데이터 입력
+  //   object변수명.key명 = 데이터; // 지정한 key 에 데이터 입력
+  //   object변수명[key명]; // 지정한 key와 연동 된 value 를 출력
+  //   object변수명.key명; // 지정한 key와 연동 된 value 를 출력
+
+    const car = {name : "아이오닉6", size : "중형", type: "세단", gas: "전기", price : 5000};
+    console.log("원본 object 타입 car :");
+    console.log(car);
+    console.log("이름 : " + car.name);
+    console.log("타입 : " + car["type"]);
+    console.log("크기 : " + car.size);
+    console.log("가격 : " + car["price"]);
+
+    // 만약 지정한 key 가 없는 key 에 데이터를 입력 시 새로운 key 가 생성되면서 데이터가 입력됨
+    car.color = "화이트";
+    console.log("기존에 없는 key 에 value 를 대입 후 object 타입 car  :");
+    console.log(car);
+    console.log("색상 : " + car.color);
+
+    const carArr = ["아이오닉6", "중형", "세단", "전기", 5000];
+    console.log("배열로 사용 시 carArr : ");
+    console.log(carArr);
+
+  </script>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
