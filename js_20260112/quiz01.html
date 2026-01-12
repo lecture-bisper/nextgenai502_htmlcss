@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script>
+    // 문제 1) 좋아하는 과일 5개를 사용하여 배열을 생성하고, 두번째 과일을 다른 과일로 변경하는 프로그램을 작성하세요
+  //   배열명 : fruits
+    console.log("\n ----- 문제 1 -----\n");
+    const fruits = ["사과", "배", "수박", "딸기", "귤"];
+    console.log(fruits);
+
+    fruits[1] = "포도"; // 직접 변경
+    fruits.splice(1, 1, "포도"); // splice()를 사용하여 수정
+    console.log(fruits);
+
+
+  //   문제 2) 현재 지하철에 '철수', '영희' 가 타고 있습니다. 다음 정거장에서 '민수'가 타고, 그 다음 정거장에서 '철수' 가 내렸을 경우, 최종적으로 남은 승객을 출력하는 프로그램을 배열을 사용하여 작성하세요
+  //   배열명 : subway
+    console.log("\n ----- 문제 2 -----\n");
+    const subway = ["철수", "영희"];
+    console.log("현재 지하철에 타고 있는 인원 : " + subway.toString());
+
+    // shift(), unshift(), push(), pop() 을 사용한 방식
+    // 민수가 지하철에 탐
+    subway.push("민수");
+    console.log("민수가 지하철에 탐");
+    console.log("현재 지하철에 타고 있는 인원 : " + subway.toString());
+
+    subway.shift();
+//   splice() 사용
+//   subway.splice(0, 1);
+//   slice();
+//   const newSubway = subway.slice(1);
+    console.log("처음 탄 인원이 내림");
+    console.log("현재 지하철에 타고 있는 인원 : " + subway.toString());
+
+  //   문제 3) prompt() 로 이름을 입력받고 파티 초대 명단에 특정 친구가 있는지 확인하는 프로그램을 작성 하세요.
+  //   이름이 있을 경우 '초대된 손님입니다.', 없으면 '명단에 없습니다' 를 출력
+  //   초대명단 배열명 : guests
+    console.log("\n ----- 문제 3 -----\n");
+    const guests = ["리사", "제니", "로제", "지수"];
+    const friend = prompt("친구 이름을 입력하세요 : ");
+
+    if (guests.indexOf(friend) > -1) {
+      console.log(friend + "는 초대된 사람입니다.");
+    }
+    else {
+      console.log(friend + "는 초대명단에 없습니다.");
+    }
+
+  //   문제 4) 10명이 달리기를 하여 통과한 사람을 순서대로 입력받은 명단을 성적 상위 3명만 따로 뽑아서 새로운 입상자 명단을 만드는 프로그램을 작성하세요.
+  //   달리기 통과 순서 배열명 : students
+  //   상위 입상 명단 배열 : top3
+    const students = ["학생1", "학생5", "학생4", "학생7", "학생9", "학생3", "학생6", "학생2", "학생8"];
+    console.log("현재 결승점 통과 순서 : " + students.join(", "));
+
+    const topStudent = students.slice(0, 3);
+    console.log("상위 3명 : ");
+    console.log(topStudent);
+  </script>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
