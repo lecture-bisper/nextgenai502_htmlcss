@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+  <link rel="stylesheet" href="./css/bootstrap.css">
+
+  <!--  jquery 라이브러리 로딩 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="./js/bootstrap.bundle.js"></script>
+</head>
+<body>
+
+<div class="container mt-5">
+  <h2>키보드 이벤트 사용하기</h2>
+
+  <div class="mt-3">
+    <div class="mt-3">
+      <label for="key01">keydown 이벤트</label>
+      <input type="text" class="form-control" id="key01">
+    </div>
+    <div class="mt-3">
+      <label for="key02">keyup 이벤트</label>
+      <input type="text" class="form-control" id="key02">
+    </div>
+    <div class="mt-3">
+      <label for="key03">keypress 이벤트</label>
+      <input type="text" class="form-control" id="key03">
+    </div>
+    <div class="mt-3">
+      <label for="key04">keycode 가져오기</label>
+      <input type="text" class="form-control" id="key04">
+    </div>
+  </div>
+
+  <br><hr><br>
+
+  <h2>form 이벤트</h2>
+
+  <div class="mt-3">
+    <form id="frm">
+      <div class="mt-3">
+        <label for="basic">기본 상태</label>
+        <input type="text" class="form-control" id="basic">
+      </div>
+      <div class="mt-3">
+        <label for="focus-blur">focus, blur 이벤트</label>
+        <input type="text" class="form-control" id="focus-blur">
+      </div>
+      <div class="mt-3">
+        <label for="input-change">input 태그의 change 이벤트</label>
+        <input type="text" class="form-control" id="input-change">
+      </div>
+      <div class="mt-3">
+        <label for="select-change">change 이벤트</label>
+        <select class="form-control" id="select-change">
+          <option value="1">옵션1</option>
+          <option value="2" selected>옵션2</option>
+          <option value="3">옵션3</option>
+          <option value="4">옵션4</option>
+          <option value="5">옵션5</option>
+        </select>
+      </div>
+      <div class="mt-3">
+        <button type="reset" class="btn btn-secondary">reset 이벤트</button>
+        <button type="submit" class="btn btn-primary">submit 이벤트</button>
+      </div>
+    </form>
+  </div>
+
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+<script>
+  // 키보드 이벤트 : 사용자가 키보드 입력을 통해서 발생시키는 이벤트
+  // keydown : 키보드의 키가 눌러질 때 발생하는 이벤트
+  // keyup : 키보드의 키가 눌러졌다가 올라갈 때 발생하는 이벤트
+  // keypress : keydown과 같이 키가 눌러질 때 발생하는 이벤트, 기능키에는 동작하지 않음
+
+  $("#key01").on("keydown", function() {
+    console.log("keydown 이벤트 발생!!");
+  });
+
+  $("#key02").on("keyup", function() {
+    console.log("keyup 이벤트 발생!!");
+  });
+
+  $("#key03").on("keypress", function() {
+    console.log("keypress 이벤트 발생!!");
+  });
+
+//   키보드 이벤트 발생 시 콜백함수의 매개변수로 event 객체를 이용하면 입력된 keyCode 를 받아올 수 있음
+//   사용법 :
+//   event.keyCode  // 아스키 코드로 입력된 키값을 가져옴
+//   event.key      // 키의 실제 문자값, 기능 이름으로 가져옴 (권장, 추천)
+//   event.code     // 키보드의 물리적 위치로 가져옴 (권장)
+  $("#key04").on("keydown", function(event) {
+    switch (event.key) {
+      case 'a':
+        alert("a를 입력했습니다.");
+        break;
+
+      case 'b':
+        alert("b를 입력했습니다.");
+        break;
+
+      case 'c':
+        alert("c를 입력했습니다.");
+        break;
+    }
+
+    console.log("keyCode 로 출력 : " + event.keyCode);
+    console.log("key 로 출력 : " + event.key);
+    console.log("code 로 출력 : " + event.code);
+  });
+
+
+//   form 이벤트 : 사용자가 form 태그를 사용할 경우 발생하는 이벤트
+//   focus : 지정한 태그에 포커스가 주어졌을 경우 발생하는 이벤트
+//   blur : 지정한 태그에서 포커스가 사라졌을 경우 발생하는 이벤트
+//   change : input 태그의 값이 변경되었을 경우 발생하는 이벤트
+//   reset : form 태그의 reset 버튼이 클릭되었을 경우 발생하는 이벤트
+//   submit : form 태그의 submit 버튼이 클릭되었을 경우 발생하는 이벤트
+
+  // reset 버튼 클릭 시 발생, 지정한 reset 버튼이 포함된 form 태그의 reset 이벤트
+  $("#frm").on("reset", function() {
+    alert("reset 버튼 클릭!!");
+  });
+
+  // submit 버튼 클릭 시 발생, 지정한 submit 버튼이 포함된 form 태그의 submit 이벤트
+  $("#frm").on("submit", function(event) {
+    alert("submit 버튼 클릭!!");
+    event.preventDefault();
+  });
+
+  // 지정한 태그에 포커스가 주어졌을 경우 발생
+  $("#focus-blur").on("focus", function() {
+    $("#focus-blur").addClass("bg-info fs-3");
+  });
+
+  // 지정한 태그에 있던 포커스가 해제되었을 경우 발생
+  $("#focus-blur").on("blur", function() {
+    $("#focus-blur").removeClass("bg-info fs-3");
+  });
+
+  // 지정한 태그가 가지고 있던 값이 변경될 때 발생
+  $("#input-change").on("change", function() {
+    let text = $("#input-change").val();
+    console.log("입력된 내용 : " + text);
+  });
+
+  $("#select-change").on("change", function() {
+    alert("선택이 변경되었습니다.");
+  });
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
