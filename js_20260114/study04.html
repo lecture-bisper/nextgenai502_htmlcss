@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>문서 로딩 이벤트</title>
+
+  <link rel="stylesheet" href="./css/bootstrap.css">
+
+  <!--  jquery 라이브러리 로딩 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="./js/bootstrap.bundle.js"></script>
+
+  <script>
+    // 문서 이벤트 : 서버에서 웹 문서를 가져오거나 문서를 스크롤 시 발생하는 등의 웹 문서를 웹 브라우저에 표시하는 것과 관련된 이벤트
+  //   load : 웹 문서의 로딩이 완료 시 이벤트 발생 (미사용)
+  //   scroll : 웹 문서의 화면이 스크롤 될 경우 이벤트 발생 (사용)
+  //   resize : 웹 문서의 크기가 변경될 경우 이벤트 발생 (사용)
+  //   unload : 웹 문서가 닫힐 때 이벤트 발생 (미사용)
+  //   error : 웹 문서가 정상적으로 로딩되지 않았을 경우 이벤트 발생 (미사용)
+  //   about : 웹 문서가 완전히 로딩되기 전 멈췄을 경우 이벤트 발생 (미사용)
+
+    window.addEventListener("resize", function() {
+      alert("화면 크기 변경!!");
+    });
+
+    // 문서 로딩 이벤트를 사용하면 html 코드가 모두 로딩된 이후이므로 script 태그를 body 태그의 끝에 입력하지 않아도 됨
+
+    // 문서 로드 이벤트 사용하는 방법 3가지
+    // 1. window 객체의 load 이벤트 사용
+    //    현재 잘 사용하지 않는 방식
+    //    window의 load 이벤트는 웹 문서의 모든 컨텐츠가 로딩 완료된 후 동작하는 이벤트
+    //    html, css, js, 이미지, 음악, 동영상과 같은 각종 미디어를 모두 정상적으로 로딩이 되어야 발생하는 이벤트
+    //    대용량 미디어를 사용할 경우 해당 미디어가 모두 로딩될 때까지 이벤트가 발생하지 않음
+    // window.addEventListener("load", function() {
+    //   alert("window 의 load 이벤트 발생!!");
+    // });
+
+    // 2. document 객체의 DOMContentLoaded 이벤트 사용 (추천)
+    //    웹 문서의 html 코드가 모두 로딩되면 동작하는 이벤트
+    //    대용량 미디어를 사용하는 웹 페이지에서도 빠르게 이벤트가 동작됨
+    // document.addEventListener("DOMContentLoaded", function() {
+    //   alert("DOMContentLoaded 이벤트 발생!!");
+    // });
+
+    // 3. jquery 의 ready() 함수 사용 (추천)
+    //    jquery 라이브러이에서 제공하는 이벤트로 자바스크립트의 DOMContentLoaded 이벤트와 구조적으로 같음
+    // $(document).ready(function() {
+    //   alert("jquery 의 ready() 이벤트 발생!!");
+    // });
+  </script>
+
+  <script>
+    // 자바스크립트는 웹 문서내에서 위에서 아래로 한줄씩 실행
+    // head 태그에서 html 태그를 검색 시 body 태그 부분이 로딩되지 않았기 때문에 지정한 html 태그를 찾을 수 없음
+    // 지정한 html 태그를 검색할 수 없는 상태에서 이벤트를 등록하기 때문에 오류가 발생함
+    const btn01 = document.getElementById("btn01");
+    btn01.addEventListener("click", function() {
+      alert("head 태그에 그냥 등록한 클릭 이벤트!!");
+    });
+  </script>
+
+  <script>
+    //  문서 로딩 이벤트를 사용 시 모든 컨텐츠 혹은 모든 html 태그가 로딩 완료된 후 지정한 이벤트가 동작하기 때문에 검색하고자 하는 html 태그를 검색할 수 있음
+    // 검색한 html 태그에 문제없이 이벤트를 등록할 수 있음
+    $(document).ready(function() {
+      $("#btn03").on("click", function() {
+        alert("head 태그에서 문서 로딩 이벤트 안에 등록한 클릭 이벤트!!");
+      });
+    });
+  </script>
+</head>
+<body>
+
+<div class="container mt-5">
+  <h2>문서 이벤트</h2>
+
+  <div class="mt-3">
+    <button type="button" class="btn btn-primary" id="btn01">head 태그에 등록한 클릭 이벤트</button>
+    <button type="button" class="btn btn-success" id="btn02">body 끝에 등록한 클릭 이벤트</button>
+    <button type="button" class="btn btn-info" id="btn03">head 태그에서 문서 로딩 이벤트 안에 등록한 클릭 이벤트</button>
+  </div>
+</div>
+
+<script>
+  //  body 태그가 종료되기 직전에 script 태그를 사용하여 html 태그를 검색하면, 필요한 모든 html 태그가 로딩 완료된 후 이기 때문에 정상적으로 html 태그를 검색할 수 있음
+  // 검색한 html 태그에 이벤트를 등록할 수 있음
+  const btn02 = document.getElementById("btn02");
+  btn02.addEventListener("click", function() {
+    alert("body 태그 끝에 등록한 클릭 이벤트!!");
+  });
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
