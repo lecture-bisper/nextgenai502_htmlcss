@@ -14,3 +14,16 @@
 	1. Javascript : 제어문 (if, if ~ else, else if)
 	2. Javascript : 제어문 (switch ~ case)
 	3. Javascript : 배열 (배열과 배열 관련 함수)
+3. 3일차
+	1. Javascript : 배열 (배열과 배열 관련 함수 추가), 문제 출제 및 풀이
+	2. Javascript : object 타입, for, for ~ in 문, 문제 출제 및 풀이
+4. 4일차
+	1. Javascript : while, do ~ while 문, break, continue
+	2. Javascript : while 문제 풀이
+	3. Javascript : 함수, 함수의 형태, 익명함수
+	4. Javascript : 함수 문제 풀이
+5. 5일차
+	1. Javascript : 자바스크립트 이벤트, 마우스 이벤트
+	2. Javascript : 키보드 이벤트, form 이벤트
+	3. Javascript : 문서 로딩 이벤트
+	4. Javascript : jquery 사용하기

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+  <link rel="stylesheet" href="./css/bootstrap.css">
+
+<!--  jquery 라이브러리 로딩 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="./js/bootstrap.bundle.js"></script>
+
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+    }
+
+    .box2 {
+      width: 300px;
+      height: 300px;
+    }
+  </style>
+
+  <script>
+  //   마우스 이벤트 : 사용자가 마우스를 사용하여 발생 시키는 이벤트
+  //   click : 마우스 왼쪽 버튼 클릭 시 동작 이벤트
+  //   dblclick : 마우스 왼쪽 버튼 더블 클릭 시 동작 이벤트
+  //   contextmenu : 마우스 오른쪽 버튼 클릭 시 동작 이벤트
+  //   mousedown : 마우스 왼쪽 버튼을 누를 경우 발생하는 이벤트
+  //   mouseup : 마우스 왼쪽 버튼을 눌렀다가 땔 경우 발생하는 이벤트
+  //   mouseover : 특정 html 태그 밖에서 위로 마우스 포인터가 이동했을 경우 발생하는 이벤트
+  //   mouseout : 특정 html 태그 위에서 밖으로 마우스 포인터가 이동했을 경우 발생하는 이벤트
+  //   mousemove : 특정 html 태그 위에서 마우스 포인터가 이동했을 경우 발생하는 이벤트
+  //      mousemove 이벤트 발생 시 콜백함수의 매개변수로 event 객체를 받아오면 마우스의 좌표를 확인 가능
+  //      clientX, clientY : 웹 브라우저의 좌측 상단을 기준으로 하는 현재 마우스 포인터의 X, Y 좌표
+  //      offsetX, offsetY : 지정한 html 태그의 좌측 상단을 기준으로 하는 현재 마우스 포인터의 X, Y 좌표
+  //      pageX, pageY : 현재 페이지 좌측 상단을 기준으로 하는 현재 마우스 포인터의 X, Y 좌표
+  //      screenX, screenY : 디바이스 좌측 상단을 기준으로 하는 현재 마우스 포인터의 X, Y 좌표
+  </script>
+</head>
+<body>
+
+<div class="container mt-5">
+  <h2>마우스 이벤트 사용하기</h2>
+
+  <button type="button" class="btn btn-primary" id="btn01">버튼 클릭 이벤트</button>
+  <button type="button" class="btn btn-primary" id="btn02">버튼 더블 클릭 이벤트</button>
+  <button type="button" class="btn btn-primary" id="btn03">버튼 오른쪽 클릭 이벤트</button>
+  <br><br>
+
+  <div>
+    <div class="box border bg-danger-subtle" id="div01">마우스 클릭, 오른쪽 클릭 이벤트</div>
+    <div class="box border bg-success-subtle mt-3" id="div02">마우스 over, out 이벤트</div>
+    <div class="box2 border bg-primary-subtle mt-3" id="div03">마우스 move 이벤트</div>
+  </div>
+</div>
+
+<script>
+  $("#btn01").on("click", function() {
+    alert("마우스 클릭 이벤트!!");
+  });
+
+  $("#btn02").on("dblclick", function() {
+    alert("마우스 더블 클릭 이벤트!!");
+  });
+
+  $("#btn03").on("contextmenu", function() {
+    alert("마우스 오른쪽 버튼 클릭 이벤트!!");
+  });
+
+  $("#div01").on("click", function() {
+    alert("div 태그에 대한 마우스 왼쪽 버튼 클릭 이벤트!!");
+  });
+
+  $("#div01").on("contextmenu", function() {
+    alert("div 태그에 대한 마우스 오른쪽 버튼 클릭 이벤트!!");
+  });
+
+  $("#div02").on("mouseover", function() {
+    console.log("mouseover 이벤트 발생!!");
+  });
+
+  $("#div02").on("mouseout", function() {
+    console.log("mouseout 이벤트 발생!!");
+  });
+
+  $("#div02").on("mousedown", function() {
+    console.log("mousedown 이벤트 발생");
+  });
+
+  $("#div02").on("mouseup", function() {
+    console.log("mouseup 이벤트 발생");
+  });
+
+  $("#div03").on("mousemove", function(event) {
+    console.log("전체 X 좌표 : " + event.clientX + ", Y 좌표 : " + event.clientY);
+    console.log("html 태그에서 X 좌표 : " + event.offsetX + ", Y 좌표 : " + event.offsetY);
+  });
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
