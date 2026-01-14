@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Jquery 사용하기</title>
+
+  <link rel="stylesheet" href="./css/bootstrap.css">
+
+  <!--  jquery 라이브러리 로딩 -->
+  <script src="./js/jquery-3.7.1.js"></script>
+  <script src="./js/bootstrap.bundle.js"></script>
+
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+    }
+  </style>
+
+  <script>
+    // jquery : 자바스크립트를 쉽게 사용할 수 있도록 해주는 자바스크립트 라이브러리
+  //    ajax 비동기 통신, DOM 조작을 쉽게 할 수 있음
+  //    jquery 사용 시 브라우저 파편화에 대한 영향을 받지 않음
+
+  //   jquery 설치 방법
+  //   1. jquery 파일을 다운받아 현재 프로젝트에 포함시켜 사용함
+  //   2. CDN 을 사용하여 외부 서버에 있는 jquery 파일을 로드하여 사용
+
+  //   jquery 사용하기
+  //   jquery 는 자바스크립트를 쉽게 사용하기 위한 라이브러리로 jquery 를 사용 시 $() 라는 기호를 사용함
+  //   jquery 는 html 태그를 검색하기 위해서 'CSS 선택자'를 사용하여 html 태그를 검색
+  //   jquery 에서는 기존 자바스크립트의 기능을 쉽게 사용할 수 있도록 여러가지 함수를 제공
+  //   jquery 를 통해서 검색한 html 태그를 자바스크립트의 변수에 저장하여 사용할 수 있음
+  //   script 태그에서 jquery 를 사용하려면 먼저 jquery를 로딩해야 함
+
+  //   사용법 :
+  //   $(css선택자).jquery제공함수();
+
+  //   jquery 의 효과 함수
+  //   hide() : 지정한 html 태그를 숨김처리, display: none; 과 동일한 기능
+  //   show() : 숨겨진 html 태그를 보이게 설정
+  //   속도의 경우 slow, fast 와 같은 지정된 단어를 사용하거나 1/1000 초로 시간을 직접 설정
+  //   콜백함수는 해당 기능이 실행 완료된 후 자동으로 동작할 함수를 설정
+
+  //   사용법 :
+  //   $(css선택자).hide(속도, 콜백함수);
+  //   $(css선택자).show(속도, 콜백함수)
+
+    // toggle() : hide()/show() 의 기능을 현재 상태에 따라 번갈아가며 동작시키는 jquery 함수
+    // 사용방법은 hide()/show()와 동일함
+
+    // 사용법 :
+    // $(css선택자).toggle(속도, 콜백함수);
+
+    $(document).ready(function() {
+      $("#btn-show").on("click", function() {
+        $("#div-box01").show(); // 즉시 동작
+        $("#div-box02").show("fast"); // fast 로 설정된 시간동안 동작
+        $("#div-box03").show("slow"); // slow 로 설정된 시간동안 동작
+        $("#div-box04").show(2000); // 사용자가 지정한 시간동안 동작
+        // 사용자가 지정한 시간동안 동작 후 동작 완료 시 콜백함수 자동 실행
+        $("#div-box05").show(3000, function() {
+          alert("보이기 완료!!");
+        });
+      });
+
+      $("#btn-hide").on("click", function() {
+        $("#div-box01").hide();
+        $("#div-box02").hide("fast");
+        $("#div-box03").hide("slow");
+        $("#div-box04").hide(2000);
+        $("#div-box05").hide(3000, function() {
+          alert("숨기기 완료!!");
+        });
+      });
+
+      $("#btn-toggle").on("click", function() {
+        $("#div-box01").toggle();
+        $("#div-box02").toggle("fast");
+        $("#div-box03").toggle("slow");
+        $("#div-box04").toggle(2000);
+        $("#div-box05").toggle(3000, function() {
+          alert("Toggle 로 상태 변경");
+        });
+      });
+
+    //   fadeIn() : 지정한 html 태그에 fade in 효과를 부여하면서 화면에 출력
+    //   fadeOut() : 지정한 html 태그에 fade out 효과를 부여하면서 태그를 숨김
+    //   fadeToggle() : 지정한 html 태그의 상태에 따라 fade in / fade out 효과를 부여함
+    //   fadeTo() : 지정한 html 태그에 fade 효과를 지정한 투명도 설정값에 맞도록 부여함, 투명도 설정값은 0.0 ~ 1.0까지임
+    //   매개변수로 속도(fast, slow, 1/1000 초로 직접 설정)와 콜백함수를 설정할 수 있음
+
+    //   사용법:
+    //   $(css선택자).fadeIn(속도, 콜백함수);
+    //   $(css선택자).fadeOut(속도, 콜백함수);
+    //   $(css선택자).fadeToggle(속도, 콜백함수);
+    //   $(css선택자).fadeTo(속도, 투명도, 콜백함수);
+
+      $("#btn-fade-in").on("click", function() {
+        $("#div-box06").fadeIn();
+        $("#div-box07").fadeIn("fast");
+        $("#div-box08").fadeIn("slow");
+        $("#div-box09").fadeIn(2000);
+        $("#div-box10").fadeIn(3000, function() {
+          alert("fadeIn() 사용");
+        });
+      });
+
+      $("#btn-fade-out").on("click", function() {
+        $("#div-box06").fadeOut();
+        $("#div-box07").fadeOut("fast");
+        $("#div-box08").fadeOut("slow");
+        $("#div-box09").fadeOut(2000);
+        $("#div-box10").fadeOut(3000, function() {
+          alert("fadeOut() 사용");
+        });
+      });
+
+      $("#btn-fade-toggle").on("click", function() {
+        $("#div-box06").fadeToggle();
+        $("#div-box07").fadeToggle("fast");
+        $("#div-box08").fadeToggle("slow");
+        $("#div-box09").fadeToggle(2000);
+        $("#div-box10").fadeToggle(3000, function() {
+          alert("fadeToggle() 사용");
+        });
+      });
+
+      $("#btn-fade-to").on("click", function() {
+        $("#div-box06").fadeTo("fast", 0.5);
+        $("#div-box07").fadeTo("slow", 0.5);
+        $("#div-box08").fadeTo(2000, 0.2);
+        $("#div-box09").fadeTo(2000, 0.8);
+        $("#div-box10").fadeTo(3000, 0.5, function() {
+          alert("fadeTo() 사용");
+        });
+      });
+    });
+  </script>
+
+<!--  로컬 jquery 파일을 로드하기 -->
+<!--  <script src="./js/jquery-3.7.1.js"></script>-->
+
+<!--  CDN으로 외부 서버의 jquery 파일 로드하기 -->
+<!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>-->
+
+</head>
+<body>
+
+<div class="container mt-5">
+  <h2>jquery 사용하기</h2>
+
+  <div class="mt-3">
+    <h3>hide()/show()</h3>
+
+    <button type="button" class="btn btn-primary" id="btn-show">show()</button>
+    <button type="button" class="btn btn-secondary" id="btn-hide">hide()</button>
+    <button type="button" class="btn btn-info" id="btn-toggle">toggle()</button>
+    <br><br>
+    <div class="box bg-danger border" id="div-box01"></div>
+    <div class="box bg-success border" id="div-box02"></div>
+    <div class="box bg-primary border" id="div-box03"></div>
+    <div class="box bg-info border" id="div-box04"></div>
+    <div class="box bg-warning border" id="div-box05"></div>
+  </div>
+
+  <br><hr><br>
+
+  <div>
+    <h3>fadeIn(), fadeOut(), fadeToggle(), fadeTo()</h3>
+
+    <button type="button" class="btn btn-primary" id="btn-fade-in">fadeIn()</button>
+    <button type="button" class="btn btn-primary" id="btn-fade-out">fadeOut()</button>
+    <button type="button" class="btn btn-primary" id="btn-fade-toggle">fadeToggle()</button>
+    <button type="button" class="btn btn-primary" id="btn-fade-to">fadeTo()</button>
+    <hr>
+    <div class="box bg-danger border" id="div-box06"></div>
+    <div class="box bg-success border" id="div-box07"></div>
+    <div class="box bg-primary border" id="div-box08"></div>
+    <div class="box bg-info border" id="div-box09"></div>
+    <div class="box bg-warning border" id="div-box10"></div>
+  </div>
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
