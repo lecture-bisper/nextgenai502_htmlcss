@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <script>
+    // while 문 : java의 while 문과 동일, for 문과 같이 반복 조건이 true 일 경우 코드블럭의 내용을 반복 실행하는 반복문
+    // 초기화변수를 while 문 외부에 선언하고 사용함
+    // 증감식을 while 문 내부에서 실행함
+
+    // 주의사항
+    // 증감식의 위치에 따라 결과가 달라질 수 있음
+    // 탈출조건이 명확하지 않을 경우 무한루프가 될 수 있음(증감식 생략, 반복조건이 항상 ture 일 경우)
+    // 2개 이상의 while 동일한 초기화 변수를 사용할 경우 초기화 변수의 값을 초기화 하지 않을 경우 2번째 while 문이 한번도 실행되지 않을 수 있음
+
+    // 사용법 :
+    // 초기화변수 선언
+    // while (반복조건) {
+    //    조건이 true 일 경우 실행할 소스코드 ... ;
+    //    증감식;
+    // }
+
+    let count = 0;
+
+    while (count < 10) {
+      console.log("count 의 값 : " + count);
+      count++;
+    }
+
+
+    console.log("\n----- while 문의 주의사항 -----\n");
+
+    count = 0;
+
+    console.log("나무꾼이 나무를 합니다");
+
+    // 증감식의 위치에 따라 결과가 달라질 수 있음
+    while (count < 10) {
+      count++;
+
+      console.log("도끼로 나무를 " + count + "번 찍습니다");
+
+      // count++;
+      if (count == 10) {
+        console.log("나무가 넘어갑니다");
+        break;
+      }
+
+      // count++;
+    }
+
+    console.log("\n");
+
+    console.log("----- 동일한 초기화 변수를 사용하는 2개의 while 문-----");
+    let cnt = 0;
+
+    while (cnt < 5) {
+      console.log("첫번째 while 문의 cnt : " + cnt);
+      cnt++;
+    }
+
+    // cnt 의 값이 다시 0 으로 초기화되지 않아서 반복 조건이 처음부터 false 임
+    while (cnt < 5) {
+      console.log("두번째 while 문의 cnt : " + cnt);
+      cnt++;
+    }
+
+    console.log("----- for 문의 경우 -----");
+
+    for (let i = 0; i < 5; i++) {
+      console.log("첫번째 for 문의 i : " + i);
+    }
+
+    for (let i = 0; i < 5; i++) {
+      console.log("두번째 for 문의 i : " + i);
+    }
+
+    // do ~ while : while문과 동일한 반복문
+    // do ~ while 문 실행 시 조건에 상관없이 무조건 1번은 실행 후 나중에 조건을 확인하는 반복문
+    // 조건식이 코드 블럭 뒤에 있기 때문에 실행 후 조건을 확인
+
+    // 사용법 : 
+    // do {
+    //    반복 실행할 소스 코드 ... ;
+    // } while (조건식);
+
+    console.log("\n ----- do ~ while 문 -----\n");
+    count = 0;
+
+    do {
+      console.log("count : " + count);
+      count++;
+    }
+    while (count < 10);
+
+    console.log("----- 같은 초기화 변수 사용 시 2개의 do ~ while 문 -----");
+
+    count = 0;
+    do {
+      console.log("첫번째 do ~ while 문의 count : " + count);
+      count++;
+    }
+    while (count < 5)
+
+    do {
+      console.log("두번째 do ~ while 문의 count : " + count);
+      count++;
+    }
+    while (count < 5);
+
+    console.log("\n----- break / continue -----\n");
+
+    // break : switch 문과 반복문에서 해당 명령을 만날 경우 즉시 해당 반복문을 종료
+    // continue : 반복문에서 해당 명령을 만날 경우 현재 루프만 종료하고, 다음 반복문을 실행함
+
+    // 사용법
+    // 반복문 (반복 조건) {
+    //    반복 실행할 소스코드 ... ;
+    //    break | continue;
+    // }
+
+    let dan = prompt("숫자를 입력하세요 : ", 5);
+    dan = Number(dan);
+
+    console.log("--- break 사용 ---");
+    for (let i = 2; i < 10; i++) {
+      if (dan == i) {
+        break;
+      }
+
+      console.log("===== " + i + "dan =====");
+
+      for (let j = 1; j < 10; j++) {
+        console.log(i + " * " + j + " = " + i * j);
+      }
+    }
+
+    console.log("--- continue 사용 ---");
+    for (let i = 2; i < 10; i++) {
+      if (dan == i) {
+        continue;
+      }
+
+      console.log("===== " + i + "dan =====");
+
+      for (let j = 1; j < 10; j++) {
+        console.log(i + " * " + j + " = " + i * j);
+      }
+    }
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
