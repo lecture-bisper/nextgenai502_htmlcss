@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+  <link rel="stylesheet" href="css/bootstrap.css">
+
+  <script src="js/jquery-3.7.1.js"></script>
+  <script src="js/bootstrap.bundle.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      // 컨텐츠 설정하기/가져오기 : jquery 에서는 html 태그에 각종 컨텐츠를 가져오거나 설정하는 함수를 제공함
+      //   text() : 지정한 html 태그의 시작 태그와 끝 태그 사이의 텍스트를 설정하거나 가져옴 (html 태그 제외)
+      //   html() : 지정한 html 태그의 시작 태그와 끝 태그 사이의 내용을 설정하거나 가져옴 (html 태그 포함)
+      //   val() : 지정한 input 태그의 value 속성값을 설정하거나 가져옴
+      //   attr() : 지정한 html 태그의 지정한 속성값을 설정하거나 가져옴
+
+      //   사용법 (가져오기) :
+      //   변수 = $(css선택자).text();
+      //   변수 = $(css선택자).html();
+      //   변수 = $(css선택자).val();
+      //   변수 = $(css선택자).attr(속성명);
+
+      //   사용법 (설정) :
+      //   $(css선택자).text(문자열);
+      //   $(css선택자).html(html 태그가 포함된 문자열);
+      //   $(css선택자).val(value 속성값);
+      //   $(css선택자).attr(속성명, 속성값);
+      //   $(css선택자).attr({속성명1: 속성값1, 속성명2: 속성값2, ... });
+
+      $("#btn-get-text").on("click", function() {
+        let text = $("#p-text").text();
+        alert("가져온 데이터 : " + text);
+      });
+
+      $("#btn-get-html").on("click", function() {
+        let text = $("#p-html").html();
+        alert("가져온 데이터 : " + text);
+      });
+
+      $("#btn-get-val").on("click", function() {
+        let text = $("#input-val").val();
+        alert("가져온 데이터 : " + text);
+      });
+
+      $("#btn-get-attr").on("click", function() {
+        let text = $("#a-attr").attr("href");
+        alert("가져온 데이터 : " + text);
+      });
+
+      $("#btn-set-text").on("click", function() {
+        const text = "text() 를 <strong><em>사용하여 설정한</em></strong> 텍스트";
+        $("#p-text").text(text);
+      });
+
+      $("#btn-set-html").on("click", function() {
+        const text = "html() 를 <strong><em>사용하여 설정한</em></strong> 텍스트";
+        $("#p-html").html(text);
+      });
+
+      $("#btn-set-val").on("click", function() {
+        const text = "jquery의 val() 을 사용하여 value 속성에 입력한 텍스트";
+        $("#input-val").val(text);
+      });
+
+      $("#btn-set-attr").on("click", function() {
+        $("#a-attr").attr("href", "http://www.naver.com");
+      });
+
+      $("#btn-set-attr2").on("click", function() {
+        $("#a-attr").attr({"href": "http://www.apple.co.kr", "target": "_self"});
+        $("#a-attr").text("애플 홈페이지");
+      });
+
+    });
+
+
+  </script>
+</head>
+<body>
+
+<div class="container mt-5">
+  <h2>jquery 로 html 태그의 데이터 가져오기</h2>
+
+  <div class="mt-3">
+    <button type="button" class="btn btn-primary" id="btn-get-text">text() 로 가져오기</button>
+    <button type="button" class="btn btn-primary" id="btn-get-html">html() 로 가져오기</button>
+    <button type="button" class="btn btn-primary" id="btn-get-val">val() 로 가져오기</button>
+    <button type="button" class="btn btn-primary" id="btn-get-attr">attr() 로 가져오기</button>
+
+    <br><br>
+
+    <button type="button" class="btn btn-info" id="btn-set-text">text() 로 설정하기</button>
+    <button type="button" class="btn btn-info" id="btn-set-html">html() 로 설정하기</button>
+    <button type="button" class="btn btn-info" id="btn-set-val">val() 로 설정하기</button>
+    <button type="button" class="btn btn-info" id="btn-set-attr">attr() 로 설정하기</button>
+    <button type="button" class="btn btn-info" id="btn-set-attr2">attr() 로 동시에 여러개 속성 설정하기</button>
+
+    <hr>
+
+    <div>
+      <p id="p-text">text() 를 <strong>사용하여 가져올</strong> 텍스트</p>
+      <p id="p-html">html() 를 <strong>사용하여 가져올</strong> 텍스트</p>
+      <input type="text" class="form-control" id="input-val"><br>
+      <a href="http://www.google.co.kr" target="_blank" id="a-attr">구글 홈페이지</a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
