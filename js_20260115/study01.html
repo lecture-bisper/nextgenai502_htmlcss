@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+  <link rel="stylesheet" href="css/bootstrap.css">
+
+  <script src="js/jquery-3.7.1.js"></script>
+  <script src="js/bootstrap.bundle.js"></script>
+
+  <style>
+    .box {
+      height: 150px;
+    }
+
+    .box2 {
+      width: 100px;
+      height: 100px;
+    }
+  </style>
+
+  <script>
+    $(document).ready(function () {
+      //   slideDown() : 지정한 숨겨진 영역을 아래로 슬라이드 하면서 보여줌
+      //   slideUp() : 지정한 영역을 위로 슬라이드 하면서 숨김
+      //   slideToggle() : slideDown(), slideUp() 기능을 현재 상태에 따라 번갈아가며 실행함
+      //   속도는 fast, slow 로 지정된 단어를 입력하거나 직접 밀리초(1/1000 초)로 입력함
+      //   콜백함수는 슬라이드 동작이 완료된 후 자동 실행될 함수
+
+      //   사용법:
+      //   $(css선택자).slideDown(속도, 콜백함수);
+      //   $(css선택자).slideUp(속도, 콜백함수);
+      //   $(css선택자).slideToggle(속도, 콜백함수);
+
+      $("#btn-slide-down").on("click", function() {
+        $("#div-slide-1").slideDown("fast");
+        $("#div-slide-2").slideDown("slow");
+        $("#div-slide-3").slideDown(2000);
+        $("#div-slide-4").slideDown(3000, function() {
+          alert("slideDown() 실행 완료!!");
+        });
+      });
+
+      $("#btn-slide-up").on("click", function() {
+        $("#div-slide-1").slideUp("fast");
+        $("#div-slide-2").slideUp("slow");
+        $("#div-slide-3").slideUp(2000);
+        $("#div-slide-4").slideUp(3000, function() {
+          alert("slideUp() 실행 완료!!");
+        });
+      });
+
+      $("#btn-slide-toggle").on("click", function() {
+        $("#div-slide-1").slideToggle("fast");
+        $("#div-slide-2").slideToggle("slow");
+        $("#div-slide-3").slideToggle(2000);
+        $("#div-slide-4").slideToggle(3000, function() {
+          alert("slideToggle() 실행 완료!!");
+        });
+      });
+
+    //   animate() : jquery 에서 제공하는 애니메니션 동작 함수
+    //   CSS 의 애니메이션 기능을 쉽게 사용할 수 있음
+    //   CSS 속성값 입력 시 연산을 통한 상대값을 사용할 수 있음
+    //   CSS 속성값을 show, hide, toggle 로 미리 지정된 단어로 사용할 수 있음
+    //   속도는 fast, slow 로 지정된 단어를 사용하거나, 밀리초(1/1000 초) 형태로 직접 입력 가능
+    //   animate() 동작 후 자동 실행되는 콜백함수를 입력할 수 있음
+    //   여러개의 animate() 사용 시 순서대로 애니메이션이 동작함
+    //   jquery 의 animate() 색상 변경은 불가능함(jquery 의 color animations plugin 이 필요함)
+
+    //   사용법:
+    //   $(css선택자).animate({css속성1: 값1, css속성2: 값2, ... }, 속도, 콜백함수);
+
+      $("#btn-ani-1").on("click", function() {
+        $("#div-ani-1").animate({left: '250px'});
+      });
+
+      $("#btn-ani-2").on("click", function() {
+        $("#div-ani-1").animate({
+          left: '250px',
+          opacity: '0.5',
+          height: '150px',
+          width: '150px'
+        }, "slow");
+      });
+
+      $("#btn-ani-3").on("click", function() {
+        $("#div-ani-1").animate({
+          left: '250px',
+          height: '+=50px',
+          width: '+=50px'
+        });
+      });
+
+      $("#btn-ani-4").on("click", function() {
+        $("#div-ani-1").animate({height: 'toggle'});
+      });
+
+      $("#btn-ani-5").on("click", function() {
+        $("#div-ani-1").animate({left: '400px', opacity: '0.2'}, 2000);
+        $("#div-ani-1").animate({top: '400px', opacity: '0.8'}, 2000);
+        $("#div-ani-1").animate({left: '0px', opacity: '0.5'}, 2000);
+        $("#div-ani-1").animate({top: '0px', opacity: '1.0'}, 2000, function() {
+          alert("애니메이션 순차적 실행 완료!!");
+        });
+      });
+
+
+    //   stop() : jquery 의 애니메이션 함수 사용 시 애니메이션 효과가 완료되기 전 애니메이션을 중지하는 함수
+    //   첫번째 매개변수인 전체 정지는 여러개의 애니메이션이 순차적으로 동작 시 모든 애니메이션을 중지할지 여부 설정, 기본값 false
+    //   두번째 매개변수 애니메이션 끝으로 이동은 애니메이션 정지 시 현재 동작 중인 애니메이션이 완료된 상태로 이동할지 아니면 그 위치에서 정지할지 여부를 설정, 기본값 false
+
+    //   사용법:
+    //   $(css선택자).stop(전체 정지, 애니메이션 끝으로 이동);
+
+      $("#btn-stop-1").on("click", function() {
+        // $("#div-ani-1").stop(false, false);
+        // 기본값 사용, 현재 동작 중인 애니메이션을 즉시 정지, 현재 상태에서 이어지는 다음 애니메이션을 동작
+        $("#div-ani-1").stop();
+      });
+
+      $("#btn-stop-2").on("click", function() {
+        // 전체 동작 정지 true, 현재 동작 중인 애니메이션과 이어지는 모든 애니메이션을 즉시 정지
+        $("#div-ani-1").stop(true, false);
+      });
+
+      $("#btn-stop-3").on("click", function() {
+        // 애니메이션 끝으로 이동 true, 현재 동작 중인 애니메이션의 마지막 상태로 즉시 변경, 이어지는 다음 애니메니션은 정상적으로 동작
+        $("#div-ani-1").stop(false, true);
+      });
+
+      $("#btn-stop-4").on("click", function() {
+        // 매개변수 전체 true, 현재 동작 중인 애니메이션과 이어지는 모든 애니메이션을 즉시 정지, 현재 동작 중인 애니메이션의 마지막 상태로 즉시 변경
+        $("#div-ani-1").stop(true, true);
+      });
+
+
+    //   체이닝 : jquery 에서 제공하는 각종 함수를 이어서 계속 호출하여 한번에 실행하는 방식
+    //   하나의 명령줄에서 여러가지 함수를 계속 연결해서 사용
+    //   jquery 함수를 실행할 객체를 여러번 찾지 않아도 됨
+
+    //   사용법:
+    //   $(css선택자).jquery함수1().jquery함수2().jquery함수3() ... ;
+
+      $("#btn-basic").on("click", function() {
+        // jquery 통해서 html 태그를 검색 후 애니메이션을 사용함
+        // html 태그 검색과 애니메이션 실행을 여러번 진행
+        $("#div-ani-2").animate({left: '400px'}, 1000);
+        $("#div-ani-2").animate({top: '400px'}, 1000);
+        $("#div-ani-2").animate({left: '0px'}, 1000);
+        $("#div-ani-2").animate({top: '0px'}, 1000);
+      });
+
+      $("#btn-chaining").on("click", function() {
+        // jquery 를 통해서 html 태그를 1번 검색 후 애니메이션을 여러번 연결해서 실행함
+        $("#div-ani-2")
+          .animate({left: '400px'}, 1000)
+          .animate({top: '400px'}, 1000)
+          .animate({left: '0px'}, 1000)
+          .animate({top: '0px'}, 1000);
+      });
+
+    });
+  </script>
+</head>
+<body>
+
+<div class="container mt-5">
+  <h2>jquery 사용하기</h2>
+
+  <div class="mt-3">
+    <h3>slideDown, slideUp, slideToggle</h3>
+
+    <button type="button" class="btn btn-primary" id="btn-slide-down">slideDown()</button>
+    <button type="button" class="btn btn-primary" id="btn-slide-up">slideUp()</button>
+    <button type="button" class="btn btn-primary" id="btn-slide-toggle">slideToggle()</button>
+
+    <hr>
+
+    <div class="text-center p-4">
+      <div class="bg-primary-subtle border p-3">
+        <p class="p-3">계속 보이는 영역</p>
+      </div>
+      <div class="box bg-success-subtle border " id="div-slide-1">
+        <p class="p-3">슬라이드로 숨겨지는 영역 1</p>
+      </div>
+      <div class="box bg-info-subtle border " id="div-slide-2">
+        <p class="p-3">슬라이드로 숨겨지는 영역 2</p>
+      </div>
+      <div class="box bg-warning-subtle border " id="div-slide-3">
+        <p class="p-3">슬라이드로 숨겨지는 영역 3</p>
+      </div>
+      <div class="box bg-danger-subtle border " id="div-slide-4">
+        <p class="p-3">슬라이드로 숨겨지는 영역 4</p>
+      </div>
+    </div>
+  </div>
+
+  <br><hr><br>
+
+  <div>
+    <h3>animate()</h3>
+
+    <button type="button" class="btn btn-primary" id="btn-ani-1">animate()</button>
+    <button type="button" class="btn btn-primary" id="btn-ani-2">여러 속성을 동시에 적용</button>
+    <button type="button" class="btn btn-primary" id="btn-ani-3">상대값 사용</button>
+    <button type="button" class="btn btn-primary" id="btn-ani-4">미리 정의된 값 사용</button>
+    <button type="button" class="btn btn-primary" id="btn-ani-5">여러 애니메이션을 순차적으로 동작</button>
+    <br>
+    <button type="button" class="btn btn-warning" id="btn-stop-1">stop() 기본값</button>
+    <button type="button" class="btn btn-warning" id="btn-stop-2">stop(true, false)</button>
+    <button type="button" class="btn btn-warning" id="btn-stop-3">stop(false, true)</button>
+    <button type="button" class="btn btn-warning" id="btn-stop-4">stop(true, true)</button>
+    <hr>
+
+    <div class="mt-3 position-relative border border-2 border-black" style="height: 500px; width: 500px;">
+      <div class="box2 bg-primary border position-absolute" id="div-ani-1"></div>
+    </div>
+  </div>
+
+  <br><hr><br>
+
+  <div>
+    <h3>체이닝</h3>
+
+    <button type="button" class="btn btn-primary" id="btn-basic">기본 애니메이션 사용하기</button>
+    <button type="button" class="btn btn-primary" id="btn-chaining">체이닝 사용 애니메이션</button>
+
+    <hr>
+
+    <div class="mt-3 position-relative border border-2 border-black" style="height: 500px; width: 500px;">
+      <div class="box2 bg-info border position-absolute" id="div-ani-2"></div>
+    </div>
+  </div>
+
+
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

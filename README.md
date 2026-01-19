@@ -27,3 +27,11 @@
 	2. Javascript : 키보드 이벤트, form 이벤트
 	3. Javascript : 문서 로딩 이벤트
 	4. Javascript : jquery 사용하기
+6. 6일차
+	1. Javascript : jquery 효과 (slide, animate, stop, 체이닝)
+	2. Javascript : jquery 컨텐츠 (text, html, val, attr)
+	3. Javascript : jquery html 태그 (append, prepend, after, before, remove, empty)
+	4. Javascript : jquery css (addClass, removeClass, toggleClass)
+7. 7일차
+	1. Javascript : jquery css, width, height, innerWidth, innerHeight, outerWidth, outerHeight
+	2. Javascript : jquery parent, parents, parentUntil, children, find, siblings, next, nextAll, nextUntil, prev, prevAll, prevUntil, first, last, eq, filter, not
