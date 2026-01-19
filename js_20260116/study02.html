@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>jquery 사용하기</title>
+
+  <link rel="stylesheet" href="css/bootstrap.css">
+
+  <script src="js/jquery-3.7.1.js"></script>
+  <script src="js/bootstrap.bundle.js"></script>
+
+  <style>
+    .box {
+      width: 400px;
+      height: 300px;
+      padding: 10px;
+      border: 10px solid blue;
+      maring: 20px;
+      background-color: lightblue;
+    }
+  </style>
+
+  <script>
+    $(document).ready(function () {
+    //   jquery 에서 길이에 관련된 함수를 미리 선언해 놓음
+
+    //   width() : 지정한 html 태그의 컨텐츠 영역의 너비, css의 width 속성
+    //   height() : 지정한 html 태그의 컨텐츠 영역의 높이, css의 height 속성
+    //   innerWidth() : 지정한 html 태그의 padding 영역을 포함한 너비
+    //   innerHeight() : 지정한 html 태그의 padding 영역을 포함한 높이
+    //   outerWidth(옵션) : 옵션이 없을 경우 지정한 html 태그의 border 영역을 포함한 너비, 옵션이 true 일 경우 지정한 html 태그의 margin 영역을 포함한 너비
+    //   outerHeight(옵션) : 옵션이 없을 경우 지정한 html 태그의 border 영역을 포함한 높이, 옵션이 true 일 경우 지정한 html 태그의 margin 영역을 포함한 높이
+
+      $("#btn-wh").on("click", function () {
+        let text = "";
+        text += "<p>";
+        text += "width : " + $("#div-box").width() + "<br>";
+        text += "height : " + $("#div-box").height() + "<br>";
+        text += "</p>";
+
+        $("#div-box").empty();
+        $("#div-box").append(text);
+      });
+
+      $("#btn-padding-wh").on("click", function () {
+        let text = "";
+        text += "<p>";
+        text += "width : " + $("#div-box").width() + "<br>";
+        text += "height : " + $("#div-box").height() + "<br>";
+        text += "inner width : " + $("#div-box").innerWidth() + "<br>";
+        text += "inner height : " + $("#div-box").innerHeight() + "<br>";
+        text += "</p>";
+
+        $("#div-box").empty();
+        $("#div-box").append(text);
+      });
+
+      $("#btn-border-wh").on("click", function () {
+        let text = "";
+        text += "<p>";
+        text += "width : " + $("#div-box").width() + "<br>";
+        text += "height : " + $("#div-box").height() + "<br>";
+        text += "inner width : " + $("#div-box").innerWidth() + "<br>";
+        text += "inner height : " + $("#div-box").innerHeight() + "<br>";
+        text += "outer width : " + $("#div-box").outerWidth() + "<br>";
+        text += "outer height : " + $("#div-box").outerHeight() + "<br>";
+        text += "</p>";
+
+        $("#div-box").empty();
+        $("#div-box").append(text);
+      });
+
+      $("#btn-margin-wh").on("click", function () {
+        let text = "";
+        text += "<p>";
+        text += "width : " + $("#div-box").width() + "<br>";
+        text += "height : " + $("#div-box").height() + "<br>";
+        text += "inner width : " + $("#div-box").innerWidth() + "<br>";
+        text += "inner height : " + $("#div-box").innerHeight() + "<br>";
+        text += "outer width : " + $("#div-box").outerWidth() + "<br>";
+        text += "outer height : " + $("#div-box").outerHeight() + "<br>";
+        text += "outer width(margin) : " + $("#div-box").outerWidth(true) + "<br>";
+        text += "outer height(margin) : " + $("#div-box").outerHeight(true) + "<br>";
+        text += "</p>";
+
+        $("#div-box").empty();
+        $("#div-box").append(text);
+      });
+    });
+
+
+  </script>
+
+</head>
+<body>
+
+<div class="container mt-5">
+  <h3>jquery 의 너비 높이 함수</h3>
+
+  <button type="button" class="btn btn-primary" id="btn-wh">width(), height()</button>
+  <button type="button" class="btn btn-success" id="btn-padding-wh">innerWidth(), innerHeight()</button>
+  <button type="button" class="btn btn-info" id="btn-border-wh">outerWidth(), outerHeight()</button>
+  <button type="button" class="btn btn-warning" id="btn-margin-wh">outerWidth(true), outerHeight(true)</button>
+
+  <hr>
+
+  <div class="p-3">
+    <div class="box" id="div-box"></div>
+  </div>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
