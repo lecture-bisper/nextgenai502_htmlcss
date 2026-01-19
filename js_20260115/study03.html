@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+
+  <link rel="stylesheet" href="css/bootstrap.css">
+
+  <script src="js/jquery-3.7.1.js"></script>
+  <script src="js/bootstrap.bundle.js"></script>
+
+  <script>
+    $(document).ready(function() {
+    //   html 태그 추가/삭제
+    //   jquery 에서는 html 태그를 동적으로 추가/삭제하기 위한 함수를 제공함
+    //   추가할 html 태그는 여러가지 방법으로 생성할 수 있음
+    //   문자열로 html 태그의 전체 형태를 구성 가능
+    //   jquery 의 text()함수를 사용할 수 있음
+    //   순수 자바스크립트의 document.createElement() 를 사용할 수 있음
+
+    //   append() : 지정한 html 태그의 끝에 html 태그를 추가함, 언제나 지정한 html 태그의 가장 뒤에 추가
+    //   prepend() : 지정한 html 태그의 앞에 html 태그를 추가함, 언제나 지정한 html 태그의 가장 앞에 추가
+    //   after() : 지정한 html 태그의 끝에 html 태그를 추가함, 언제나 지정한 html 태그 바로 뒤에 추가
+    //   before() : 지정한 html 태그의 앞에 html 태그를 추가함, 언제나 지정한 html 태그 바로 앞에 추가
+    //   각 함수 실행 시 여러개의 html 태그를 동시에 추가할 수 있음
+
+    //   사용법 :
+    //   $(css선택자).append(html태그, html태그2, ... );
+    //   $(css선택자).prepend(html태그, html태그2, ... );
+    //   $(css선택자).after(html태그, html태그2, ... );
+    //   $(css선택자).before(html태그, html태그2, ... );
+
+      let pAppendCount = 0;
+      let pPrependCount = 0;
+      let olAppendCount = 0;
+      let olPrependCount = 0;
+
+      $("#btn-p-append").on("click", function() {
+        $("#p-add").append(" <strong>append " + pAppendCount + "</strong> ");
+        pAppendCount++;
+      });
+
+      $("#btn-ol-append").on("click", function() {
+        $("#ol-add").append("<li>append 리스트 아이템 " + olAppendCount + "</li>");
+        olAppendCount++;
+      });
+
+      $("#btn-p-prepend").on("click", function() {
+        $("#p-add").prepend(" <strong>prepend " + pPrependCount + "</strong> ");
+        pPrependCount++;
+      });
+
+      $("#btn-ol-prepend").on("click", function() {
+        $("#ol-add").prepend("<li>prepend 리스트 아이템 " + olPrependCount + "</li>");
+        olPrependCount++;
+      });
+
+
+      let pAfterCount = 0;
+      let pBeforeCount = 0;
+      let olAfterCount = 0;
+      let olBeforeCount = 0;
+
+      $("#btn-p-after").on("click", function() {
+        $("#p-add2").after(" <strong>after " + pAfterCount + "</strong> ");
+        pAfterCount++;
+      });
+
+      $("#btn-ol-after").on("click", function() {
+        $("#ol-add2").after("<li>after " + olAfterCount + "</li>");
+        olAfterCount++;
+      });
+
+      $("#btn-p-before").on("click", function() {
+        $("#p-add2").before(" <strong>before " + pBeforeCount + "</strong> ");
+        pBeforeCount++;
+      });
+
+      $("#btn-ol-before").on("click", function() {
+        $("#ol-add2").before("<li>before " + olBeforeCount + "</li>");
+        olBeforeCount++;
+      });
+
+
+      $("#btn-create-text").on("click", function() {
+        // 자바스크립트의 일반 문자열에 html 태그를 포함하여 텍스트를 만듬
+        let text = "<p>일반 텍스트로 추가한 태그</p>";
+        // jquery 의 append() 함수를 사용하여 만들어진 텍스트를 html 태그로 추가
+        $("#div-add").append(text);
+      });
+
+      $("#btn-create-jquery").on("click", function() {
+        // jquery 를 사용하여 p 태그를 먼저 생성
+        // text() 함수를 사용하여 생성된 p 태그의 텍스트를 추가
+        let text = $("<p></p>").text("jquery 로 추가한 태그");
+        $("#div-add").append(text);
+      });
+
+      $("#btn-create-js").on("click", function() {
+        // createElement() 를 사용하여 p 태그를 생성
+        let text = document.createElement("p");
+        // 생성된 p 태그에 innerHTML 을 사용하여 시작 태그와 끝 태그 사이의 텍스트를 추가
+        text.innerHTML = "document.createElement() 로 추가한 태그";
+        $("#div-add").append(text);
+      });
+
+
+    //   remove() : 지정한 html 태그와 그 자손 태그를 모두 삭제, 매개변수로 css 선택자를 사용하여 필터링 기능으로 태그 삭제 가능
+    //   empty() : 지정한 html 태그의 자손 태그를 모두 삭제
+
+    //   사용법:
+    //   $(css선택자).remove(css선택자);
+    //   $(css선택자).empty();
+
+      $("#btn-remove").on("click", function() {
+        // 지정한 html 태그와 자손 태그를 모두 삭제
+        $("#div-target").remove();
+      });
+
+      $("#btn-empty").on("click", function() {
+        // 지정한 html 태그의 자손 태그를 모두 삭제
+        $("#div-target").empty();
+      });
+
+      $("#btn-remove-filter").on("click", function() {
+        // 지정한 html 태그 중 css선택자와 동일한 조건의 태그만 삭제
+        $("div").remove(".filter");
+      });
+    });
+  </script>
+</head>
+<body>
+
+<div class="container mt-5">
+  <h2>html 태그 추가/삭제</h2>
+
+  <div class="mt-3">
+    <h3>append()/prepend()</h3>
+
+    <button type="button" class="btn btn-primary" id="btn-p-append">append() 로 p 태그에 추가</button>
+    <button type="button" class="btn btn-primary" id="btn-ol-append">append() 로 ol 태그에 추가</button>
+    <button type="button" class="btn btn-success" id="btn-p-prepend">prepend() 로 p 태그에 추가</button>
+    <button type="button" class="btn btn-success" id="btn-ol-prepend">prepend() 로 ol 태그에 추가</button>
+
+    <hr>
+
+    <div>
+      <p id="p-add">append()/prepend() 로 추가될 위치의 텍스트</p>
+
+      <ol id="ol-add">
+        <li>리스트 아이템 1</li>
+        <li>리스트 아이템 2</li>
+        <li>리스트 아이템 3</li>
+      </ol>
+    </div>
+  </div>
+
+  <br><hr><br>
+
+  <div>
+    <h3>after()/before()</h3>
+
+    <button type="button" class="btn btn-primary" id="btn-p-after">after() 로 p 태그에 추가</button>
+    <button type="button" class="btn btn-primary" id="btn-ol-after">after() 로 ol 태그에 추가</button>
+    <button type="button" class="btn btn-success" id="btn-p-before">before() 로 p 태그에 추가</button>
+    <button type="button" class="btn btn-success" id="btn-ol-before">before() 로 ol 태그에 추가</button>
+
+    <hr>
+
+    <div>
+      <span id="p-add2">after()/before() 로 추가될 위치의 텍스트</span>
+
+      <ol id="ol-add2">
+        <li>리스트 아이템 1</li>
+        <li>리스트 아이템 2</li>
+        <li>리스트 아이템 3</li>
+      </ol>
+    </div>
+  </div>
+
+  <br><hr><br>
+
+  <div>
+    <h3>jquery 로 html 태그 생성하는 방법3</h3>
+
+    <button type="button" class="btn btn-primary" id="btn-create-text">일반 text 로 태그 생성</button>
+    <button type="button" class="btn btn-success" id="btn-create-jquery">jquery 로 태그 생성</button>
+    <button type="button" class="btn btn-info" id="btn-create-js">document.createElement()로 태그 생성</button>
+
+    <hr>
+
+    <div class="mt-3" id="div-add">
+      <p>기존 문자열</p>
+    </div>
+  </div>
+
+  <br><hr><br>
+
+  <div>
+    <h3>remove() / empty()</h3>
+
+    <button type="button" class="btn btn-primary" id="btn-remove">remove() 로 모두 삭제</button>
+    <button type="button" class="btn btn-success" id="btn-empty">empty() 로 자손태그만 삭제</button>
+    <button type="button" class="btn btn-info" id="btn-remove-filter">remove(css선택자) 로 필터링하여 삭제</button>
+
+    <hr>
+
+    <div>
+      <div class="bg-warning p-3 border border-black" id="div-target">
+        <div class="mt-3 p-3 bg-info-subtle">
+          <div class="mt-3 p-3 bg-success-subtle">
+            <p>자손 태그</p>
+          </div>
+        </div>
+        <p>지정한 태그의 두번째 자식 태그</p>
+        <p>지정한 태그의 세번째 자식 태그</p>
+      </div>
+      <div class="filter mt-3 bg-warning-subtle border border-black p-3">
+        <p>지정한 태그의 형태 태그 1</p>
+      </div>
+      <div class="filter mt-3 bg-warning-subtle border border-black p-3">
+        <p>지정한 태그의 형태 태그 2</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
