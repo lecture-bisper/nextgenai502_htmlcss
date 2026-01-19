@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+
+  <link rel="stylesheet" href="css/bootstrap.css">
+
+  <script src="js/jquery-3.7.1.js"></script>
+  <script src="js/bootstrap.bundle.js"></script>
+
+  <style>
+    .blue {
+      color: dodgerblue;
+    }
+
+    .important {
+      font-weight: bold;
+      font-size: 32px;
+    }
+  </style>
+
+  <script>
+    $(document).ready(function() {
+    //   jquery 로 class 속성 제어하기
+    //   jquery 에서 css 클래스를 쉽게 적용할 수 있도록 여러가지 함수를 제공함
+
+    //   addClass() : 지정한 html 태그에 하나 이상의 클래스를 추가하는 함수
+    //   removeClass() : 지정한 html 태그에서 하나 이상의 클래스를 삭제하는 함수
+    //   toggleClass() : 지정한 html 태그에 대해서 하나 이상의 클래스를 현재 상태에 따라 추가/삭제를 번갈아가며 동작하는 함수
+
+    //   사용법:
+    //   $(css선택자).addClass(클래스명1, 클래스명2, ... );
+    //   $(css선택자).removeClass(클래스명1, 클래스명2, ...);
+    //   $(css선택자).toggleClass(클래스명1, 클래스명2, ...);
+
+
+      $("#btn-add-single").on("click", function() {
+        $("#target h3, #target h4, #target p").addClass("blue");
+        $("#target div").addClass("important");
+      });
+
+      $("#btn-add-multi").on("click", function() {
+        $("#target .test1").addClass("blue important");
+      });
+
+      $("#btn-remove-single").on("click", function() {
+        $("#target h3, #target h4, #target p").removeClass("blue");
+        $("#target div").removeClass("important");
+      });
+
+      $("#btn-remove-multi").on("click", function() {
+        $("#target .test1").removeClass("blue important");
+      });
+
+      $("#btn-toggle-single").on("click", function() {
+        $("#target h3, #target h4, #target p").toggleClass("blue");
+        $("#target div").toggleClass("important");
+      });
+
+      $("#btn-toggle-multi").on("click", function() {
+        $("#target .test1").toggleClass("blue important");
+      });
+    });
+  </script>
+</head>
+<body>
+
+<div class="container mt-5">
+  <h2>jquery 로 클래스 제어하기</h2>
+
+  <div class="mt-3">
+    <h3>addClass()/removeClass()/toggleClass()</h3>
+
+    <button type="button" class="btn btn-primary" id="btn-add-single">addClass() 로 클래스 추가</button>
+    <button type="button" class="btn btn-primary" id="btn-add-multi">addClass() 로 여러개 클래스 동시 추가</button>
+    <button type="button" class="btn btn-secondary" id="btn-remove-single">removeClass() 로 클래스 삭제</button>
+    <button type="button" class="btn btn-secondary" id="btn-remove-multi">removeClass() 로 여러개 클래스 동시 삭제</button>
+    <button type="button" class="btn btn-success" id="btn-toggle-single">toggleClass() 로 클래스 추가/삭제</button>
+    <button type="button" class="btn btn-success" id="btn-toggle-multi">toggleClass() 로 여러개 클래스 동시 추가/삭제</button>
+
+    <hr>
+
+    <div class="mt-3" id="target">
+      <h3 class="test1">버튼 클릭 시 색상 바뀜</h3>
+      <h4>예시용 문자열</h4>
+      <p class="test1">p태그로 만든 예시용 문자열 1</p>
+      <p class="test2">p태그로 만든 예시용 문자열 2</p>
+      <div class="test1">div 태그로 만든 예시용 문자열</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
